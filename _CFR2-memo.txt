@@ -1,0 +1,64 @@
+CFR2 Result
+(GS_test) shimano@SHIMANO-iMac test % python CFR2.py
+===
+Info_set: 1   Action: 0  Prob: 0.766076
+Info_set: 1   Action: 1  Prob: 0.233924
+N/A
+N/A
+===
+Info_set: 2   Action: 0  Prob: 0.999928
+Info_set: 2   Action: 1  Prob: 0.000072
+N/A
+N/A
+===
+Info_set: 3   Action: 0  Prob: 0.302740
+Info_set: 3   Action: 1  Prob: 0.697260
+N/A
+N/A
+===
+Info_set: 4   Action: 0  Prob: 0.999975
+Info_set: 4   Action: 1  Prob: 0.000025
+N/A
+N/A
+===
+N/A
+N/A
+Info_set: 5   Action: 2  Prob: 0.664636
+Info_set: 5   Action: 3  Prob: 0.335364
+===
+Info_set: 6   Action: 0  Prob: 0.000015
+Info_set: 6   Action: 1  Prob: 0.999985
+N/A
+N/A
+===
+N/A
+N/A
+Info_set: 7   Action: 2  Prob: 0.000003
+Info_set: 7   Action: 3  Prob: 0.999997
+===
+Info_set: 8   Action: 0  Prob: 0.665273
+Info_set: 8   Action: 1  Prob: 0.334727
+N/A
+N/A
+===
+N/A
+N/A
+Info_set: 9   Action: 2  Prob: 0.999997
+Info_set: 9   Action: 3  Prob: 0.000003
+===
+N/A
+N/A
+Info_set: 10   Action: 2  Prob: 0.999998
+Info_set: 10   Action: 3  Prob: 0.000002
+===
+N/A
+N/A
+Info_set: 11   Action: 2  Prob: 0.432558
+Info_set: 11   Action: 3  Prob: 0.567442
+===
+N/A
+N/A
+Info_set: 12   Action: 2  Prob: 0.000004
+Info_set: 12   Action: 3  Prob: 0.999996
+
+実行時間: 35.466458
