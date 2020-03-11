@@ -24,6 +24,7 @@ def create_info_set(chance_action, action, payoff):
             for k in sample:
                 if payoff[k[0]][k[1]][k[2]] < 10:
                     initial.append(k)
+    
     dummy_sec_initial = copy.copy(initial)
     for sec in dummy_sec_initial[3:]:
         sec_initial = [ [sec] ]
@@ -36,12 +37,16 @@ def create_info_set(chance_action, action, payoff):
                     sample.append(hoge)
             if ite != 2:
                 sec_initial.append(sample)
+            """
             else:
                 for k in sample:
                     if payoff[k[0]][k[1]][k[2]]+payoff[k[3]][k[4]][k[5]] < 10:
                         sec_initial.append(k)
+            """
         for i in sec_initial[1:]:
             initial.append(i)
+    
+    """
     dummy_third_initial = copy.copy(initial)
     for third in dummy_third_initial:
         if len(third) == 6:
@@ -56,15 +61,17 @@ def create_info_set(chance_action, action, payoff):
                 if ite != 2:
                     third_initial.append(sample)
                 else:
+                    # ここたぶんいらない記述
                     for k in sample:
                         third_initial.append(k)
             for i in third_initial[1:]:
                 initial.append(i)
+    """
     
     return initial
 
 
-itelater = 200
+itelater = 1000
 player = [0, 1] #Offence, Defence
 chance_action = [0, 1, 2] #low, middle, high
 action = [ [0, 1, 2, 3, 4], #inside, outside, short, middle, long
@@ -128,33 +135,57 @@ for i in information_set:
 sigma = []
 for i in node_player:
     if i == 0:
-        sigma.append(init_sigma[i+1])
+        sigma0_dummy = copy.copy(init_sigma[i+1])
+        sigma.append(sigma0_dummy)
     elif i == 1:
-        sigma.append(init_sigma[i+1])
+        sigma1_dummy = copy.copy(init_sigma[i+1])
+        sigma.append(sigma1_dummy)
     else:
-        sigma.append(init_sigma[0])
+        sigmaC_dummy = copy.copy(init_sigma[0])
+        sigma.append(sigmaC_dummy)
 
 nu_sigma_list, sigma_sum, Regret = [], [], []
 for i in node_player:
     if i == 0:
-        nu_sigma_list.append(init_nu_sigma_list[i+1])
-        sigma_sum.append(init_sigma_sum[i+1])
-        Regret.append(init_Regret[i+1])
+        dummy_nu_sigma_list = copy.copy(init_nu_sigma_list[i+1])
+        nu_sigma_list.append(dummy_nu_sigma_list)
+        dummy_sigma_sum = copy.copy(init_sigma_sum[i+1])
+        sigma_sum.append(dummy_sigma_sum)
+        dummy_Regret = copy.copy(init_Regret[i+1])
+        Regret.append(dummy_Regret)
     elif i == 1:
-        nu_sigma_list.append(init_nu_sigma_list[i+1])
-        sigma_sum.append(init_sigma_sum[i+1])
-        Regret.append(init_Regret[i+1])
+        dummy_nu_sigma_list = copy.copy(init_nu_sigma_list[i+1])
+        nu_sigma_list.append(dummy_nu_sigma_list)
+        dummy_sigma_sum = copy.copy(init_sigma_sum[i+1])
+        sigma_sum.append(dummy_sigma_sum)
+        dummy_Regret = copy.copy(init_Regret[i+1])
+        Regret.append(dummy_Regret)
     else:
-        nu_sigma_list.append(init_nu_sigma_list[0])
-        sigma_sum.append(init_sigma_sum[0])
-        Regret.append(init_Regret[0])
-
+        dummy_nu_sigma_list = copy.copy(init_nu_sigma_list[0])
+        nu_sigma_list.append(dummy_nu_sigma_list)
+        dummy_sigma_sum = copy.copy(init_sigma_sum[0])
+        sigma_sum.append(dummy_sigma_sum)
+        dummy_Regret = copy.copy(init_Regret[0])
+        Regret.append(dummy_Regret)
+"""
+for i in nu_sigma_list:
+    print (i)
+print ("")
+nu_sigma_list[1][0] = "hogehoge"
+for i in nu_sigma_list:
+    print (i)
+quit()
+"""
 pi_i_sum = []
 for i in node_action:
     pi_i_sum.append(0)
 
 
 def CFR(h, i, t, pi_i, pi_other):
+
+    #print (h)
+    #print ( "pi_i: %f  pi_other: %f" % (pi_i, pi_other ) )
+    #print ("======")
 
     for c in information_set:
         if (h in c) or (h == c):
@@ -171,9 +202,13 @@ def CFR(h, i, t, pi_i, pi_other):
         if i == 0:
             if payoff[h[0]][h[1]][h[2]] + payoff[h[3]][h[4]][h[5]] >= 10:
                 return  1
+            else: # あとでけす
+                return 0
         else:
             if payoff[h[0]][h[1]][h[2]] + payoff[h[3]][h[4]][h[5]] >= 10:
                 return  -1
+            else: # あとでけす
+                return 0
     elif len(h) == 9:
         if i == 0:
             if payoff[h[0]][h[1]][h[2]] + payoff[h[3]][h[4]][h[5]] + payoff[h[6]][h[7]][h[8]] >= 10:
@@ -191,6 +226,8 @@ def CFR(h, i, t, pi_i, pi_other):
         for a in chance_action:
             dummy = copy.copy(h)
             dummy.append(a)
+            #print ("hoge")
+            #print ("%f    %f" % (sigma[info_index][a], pi_other))
             chance_node_eu += sigma[info_index][a] * CFR(dummy, i, t, pi_i, sigma[info_index][a]*pi_other)
         return chance_node_eu
 
@@ -202,10 +239,14 @@ def CFR(h, i, t, pi_i, pi_other):
         if node_player[info_index] == i:
             dummy = copy.copy(h)
             dummy.append(a)
+            #print ("hogehoge")
+            #print ("%f    %f" % (sigma[info_index][a], pi_i))
             nu_sigma_list[info_index][a] = CFR(dummy, i, t, sigma[info_index][a]*pi_i, pi_other)
         else:
             dummy = copy.copy(h)
             dummy.append(a)
+            #print ("hogehogehoge")
+            #print ("%f    %f" % (sigma[info_index][a], pi_other))
             nu_sigma_list[info_index][a] = CFR(dummy, i, t, pi_i, sigma[info_index][a]*pi_other)
         nu_sigma += sigma[info_index][a] * nu_sigma_list[info_index][a]
 
@@ -216,7 +257,7 @@ def CFR(h, i, t, pi_i, pi_other):
             #print ( "%f  %f  %f" % ( Regret[info_index][a], pi_other, ( nu_sigma_list[info_index][a] - nu_sigma ) ) )
             #print ("=")
             sigma_sum[info_index][a] += pi_i * sigma[info_index][a]
-            #print ( "%f  %f  %f" % (sigma_sum[info_index][a], pi_i, sigma[info_index][a] ) )
+            #print ( "%f  %f  %f" % ( sigma_sum[info_index][a], pi_i, sigma[info_index][a] ) )
             #print ("===")
         pi_i_sum[info_index] += pi_i
 
@@ -229,6 +270,7 @@ def CFR(h, i, t, pi_i, pi_other):
             if Regret[info_index][a] > 0:
                 sigma[info_index][a] = Regret[info_index][a] / sum_regret
             else:
+                #print ("Fuuuuuuuuuuuuuuuuuuuuuuuck!!!!!!!!!")
                 sigma[info_index][a] = 0
         else:
             sigma[info_index][a] = 1/len(node_action[info_index])
@@ -239,12 +281,9 @@ def CFR(h, i, t, pi_i, pi_other):
 start = time.time()
 for t in range(itelater):
     for i in player:
-        CFR([], i, t, 1, 1)
+        CFR([], i, t, 1.0, 1.0)
 finish = time.time()
 
-#
-# pi_iがおそらく桁落ちしている
-#
 
 #Result
 for i in range(len(sigma_sum)):
@@ -252,10 +291,12 @@ for i in range(len(sigma_sum)):
         continue
     print ("===")
     if node_player[i] == 0:
+        print (information_set[i])
         for a in action[0]:
             #print ( "Info_set: %d   Action: %d  Prob: %f" % (i, a, sigma_sum[i][a]/pi_i_sum[i]) )
             print ( "Info_set: %d   sigma_sum: %f  pi_i_sum: %f" % (i, sigma_sum[i][a], pi_i_sum[i]) )
     elif node_player[i] == 1:
+        print (information_set[i])
         for a in action[1]:
             #print ( "Info_set: %d   Action: %d  Prob: %f" % (i, a, sigma_sum[i][a]/pi_i_sum[i]) )
             print ( "Info_set: %d   sigma_sum: %f  pi_i_sum: %f" % (i, sigma_sum[i][a], pi_i_sum[i]) )
