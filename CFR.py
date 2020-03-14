@@ -9,8 +9,8 @@ import copy
 itelater = 100000
 player = [0, 1]
 action = [0, 1]
-paypff = [ [5, 1],
-           [0, 7] ] #zero sum game
+paypff = [ [1, 1],
+           [1, 1] ] #zero sum game
 terminal = [ [0, 0], [0, 1],
              [1, 0], [1, 1] ]
 information_set = [ [[]],

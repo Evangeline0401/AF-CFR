@@ -6,7 +6,7 @@ import time
 import copy
 
 
-itelater = 100000
+itelater = 10000
 player = [0, 1] #Player1, Player2
 action = [0, 1, 2, 3] #check, bet, fold, call
 chance_action = [0, 1, 2, 3, 4, 5] #JQ, JK, QJ, QK, KJ, KQ
@@ -118,7 +118,8 @@ def CFR(h, i, t, pi_i, pi_other):
 start = time.time()
 for t in range(itelater):
     for i in player:
-        CFR([], i, t, 1, 1)
+        hoge = CFR([], i, t, 1, 1)
+        print (i, hoge)
 finish = time.time()
 
 for i in range(len(sigma_sum)):

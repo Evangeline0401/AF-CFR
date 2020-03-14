@@ -10,11 +10,11 @@ import itertools
 itelater = 100000
 player = [0, 1] #Offence, Defence
 chance_action = [0, 1, 2] #low, middle, high
-action = [ [0, 1, 2, 3, 4, 5, 6], #inside, outside, short, middle, long, PassfakeRun, RunfakePass
+action = [ [0, 1, 2, 3, 4], #inside, outside, short, middle, long, PassfakeRun, RunfakePass
            [0, 1, 2], ] #4men, 5men, 6men
 
 payoff = []
-m_payoff = [3, 2, 2, 3, 4, 3, 7, 7, 5, 8, 9, 7, 7, 12, 5, 4, -1, 4, 7, 6, 0]
+m_payoff = [3, 2, 2, 3, 4, 3, 7, 7, 5, 8, 9, 7, 7, 12, 5]
 for p in m_payoff:
     payoff.append(p-2)
 payoff += m_payoff
@@ -27,28 +27,28 @@ for c, o, d in itertools.product(chance_action, action[0], action[1]):
 
 information_set = [ [[]],
                     [[0], [1], [2]],
-                    [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [0, 5], [0, 6],
-                     [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [1, 5], [1, 6],
-                     [2, 0], [2, 1], [2, 2], [2, 3], [2, 4], [2, 5], [2, 6]] ]
+                    [[0, 0], [0, 1], [0, 2], [0, 3], [0, 4],
+                     [1, 0], [1, 1], [1, 2], [1, 3], [1, 4],
+                     [2, 0], [2, 1], [2, 2], [2, 3], [2, 4],] ]
 node_player = [ 3,
                 0,
                 1, ]
 node_action = [ [0, 1, 2],
-                [0, 1, 2, 3, 4, 5, 6],
+                [0, 1, 2, 3, 4],
                 [0, 1, 2], ]
 chance_node = [ [] ]
 
 sigma = [ [1/3, 1/3, 1/3],
-          [1/7, 1/7, 1/7, 1/7, 1/7, 1/7, 1/7],
+          [1/5, 1/5, 1/5, 1/5, 1/5],
           [1/3, 1/3, 1/3], ]
 nu_sigma_list = [ [0, 0, 0],
-                  [0, 0, 0, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 0],
                   [0, 0, 0], ]
 sigma_sum = [ [0, 0, 0],
-              [0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0],
               [0, 0, 0], ]
 Regret = [ [0, 0, 0],
-           [0, 0, 0, 0, 0, 0, 0],
+           [0, 0, 0, 0, 0],
            [0, 0, 0], ]
 pi_i_sum = [ 0,
              0,
@@ -57,20 +57,18 @@ pi_i_sum = [ 0,
 
 def CFR(h, i, t, pi_i, pi_other):
 
-    print (pi_i)
-
     for c in information_set:
         if h in c:
             info_index = information_set.index(c)
 
     if h in terminal:
         if i == 0:
-            if payoff[ terminal.index(h) ] >= 3:
+            if payoff[ terminal.index(h) ] >= 10:
                 return  1
             else:
                 return 0
         else:
-            if payoff[ terminal.index(h) ] >= 3:
+            if payoff[ terminal.index(h) ] >= 10:
                 return  -1
             else:
                 return 0
@@ -122,7 +120,8 @@ def CFR(h, i, t, pi_i, pi_other):
 start = time.time()
 for t in range(itelater):
     for i in player:
-        CFR([], i, t, 1, 1)
+        hoge = CFR([], i, t, 1, 1)
+        #print (i, hoge)
 finish = time.time()
 
 

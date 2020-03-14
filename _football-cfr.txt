@@ -1,0 +1,613 @@
+1000 ite
+
+    First Down
+===
+[[0], [1], [2]]
+Info_set: 1   Action: 0  Prob: 0.000067
+Info_set: 1   Action: 1  Prob: 0.000067
+Info_set: 1   Action: 2  Prob: 0.000265
+Info_set: 1   Action: 3  Prob: 0.999097
+Info_set: 1   Action: 4  Prob: 0.000505
+===
+[[0, 0], [0, 1], [0, 2], [0, 3], [0, 4], [1, 0], [1, 1], [1, 2], [1, 3], [1, 4], [2, 0], [2, 1], [2, 2], [2, 3], [2, 4]]
+Info_set: 2   Action: 0  Prob: 0.655320
+Info_set: 2   Action: 1  Prob: 0.000067
+Info_set: 2   Action: 2  Prob: 0.344613
+
+    inside, 4men, 1yd
+===
+[[0, 0, 0, 0], [0, 0, 0, 1], [0, 0, 0, 2]]
+Info_set: 48   Action: 0  Prob: 0.066667
+Info_set: 48   Action: 1  Prob: 0.066667
+Info_set: 48   Action: 2  Prob: 0.066667
+Info_set: 48   Action: 3  Prob: 0.066667
+Info_set: 48   Action: 4  Prob: 0.733333
+===
+[[0, 0, 0, 0, 0], [0, 0, 0, 0, 1], [0, 0, 0, 0, 2], [0, 0, 0, 0, 3], [0, 0, 0, 0, 4], [0, 0, 0, 1, 0], [0, 0, 0, 1, 1], [0, 0, 0, 1, 2], [0, 0, 0, 1, 3], [0, 0, 0, 1, 4], [0, 0, 0, 2, 0], [0, 0, 0, 2, 1], [0, 0, 0, 2, 2], [0, 0, 0, 2, 3], [0, 0, 0, 2, 4]]
+Info_set: 49   Action: 0  Prob: 0.333333
+Info_set: 49   Action: 1  Prob: 0.333333
+Info_set: 49   Action: 2  Prob: 0.333333
+
+    inside, 5men, 0yd
+===
+[[0, 0, 1, 0], [0, 0, 1, 1], [0, 0, 1, 2]]
+Info_set: 50   Action: 0  Prob: 0.066667
+Info_set: 50   Action: 1  Prob: 0.066667
+Info_set: 50   Action: 2  Prob: 0.066667
+Info_set: 50   Action: 3  Prob: 0.066667
+Info_set: 50   Action: 4  Prob: 0.733333
+===
+[[0, 0, 1, 0, 0], [0, 0, 1, 0, 1], [0, 0, 1, 0, 2], [0, 0, 1, 0, 3], [0, 0, 1, 0, 4], [0, 0, 1, 1, 0], [0, 0, 1, 1, 1], [0, 0, 1, 1, 2], [0, 0, 1, 1, 3], [0, 0, 1, 1, 4], [0, 0, 1, 2, 0], [0, 0, 1, 2, 1], [0, 0, 1, 2, 2], [0, 0, 1, 2, 3], [0, 0, 1, 2, 4]]
+Info_set: 51   Action: 0  Prob: 0.333333
+Info_set: 51   Action: 1  Prob: 0.333333
+Info_set: 51   Action: 2  Prob: 0.333333
+
+    inside, 6men, 0yd
+===
+[[0, 0, 2, 0], [0, 0, 2, 1], [0, 0, 2, 2]]
+Info_set: 52   Action: 0  Prob: 0.066667
+Info_set: 52   Action: 1  Prob: 0.066667
+Info_set: 52   Action: 2  Prob: 0.066667
+Info_set: 52   Action: 3  Prob: 0.066667
+Info_set: 52   Action: 4  Prob: 0.733333
+===
+[[0, 0, 2, 0, 0], [0, 0, 2, 0, 1], [0, 0, 2, 0, 2], [0, 0, 2, 0, 3], [0, 0, 2, 0, 4], [0, 0, 2, 1, 0], [0, 0, 2, 1, 1], [0, 0, 2, 1, 2], [0, 0, 2, 1, 3], [0, 0, 2, 1, 4], [0, 0, 2, 2, 0], [0, 0, 2, 2, 1], [0, 0, 2, 2, 2], [0, 0, 2, 2, 3], [0, 0, 2, 2, 4]]
+Info_set: 53   Action: 0  Prob: 0.333333
+Info_set: 53   Action: 1  Prob: 0.333333
+Info_set: 53   Action: 2  Prob: 0.333333
+
+    outside, 4men, 1yd
+===
+[[0, 1, 0, 0], [0, 1, 0, 1], [0, 1, 0, 2]]
+Info_set: 54   Action: 0  Prob: 0.066667
+Info_set: 54   Action: 1  Prob: 0.066667
+Info_set: 54   Action: 2  Prob: 0.066667
+Info_set: 54   Action: 3  Prob: 0.066667
+Info_set: 54   Action: 4  Prob: 0.733333
+===
+[[0, 1, 0, 0, 0], [0, 1, 0, 0, 1], [0, 1, 0, 0, 2], [0, 1, 0, 0, 3], [0, 1, 0, 0, 4], [0, 1, 0, 1, 0], [0, 1, 0, 1, 1], [0, 1, 0, 1, 2], [0, 1, 0, 1, 3], [0, 1, 0, 1, 4], [0, 1, 0, 2, 0], [0, 1, 0, 2, 1], [0, 1, 0, 2, 2], [0, 1, 0, 2, 3], [0, 1, 0, 2, 4]]
+Info_set: 55   Action: 0  Prob: 0.333333
+Info_set: 55   Action: 1  Prob: 0.333333
+Info_set: 55   Action: 2  Prob: 0.333333
+
+    outside, 5men, 2yd
+===
+[[0, 1, 1, 0], [0, 1, 1, 1], [0, 1, 1, 2]]
+Info_set: 56   Action: 0  Prob: 0.066667
+Info_set: 56   Action: 1  Prob: 0.066667
+Info_set: 56   Action: 2  Prob: 0.066667
+Info_set: 56   Action: 3  Prob: 0.233333
+Info_set: 56   Action: 4  Prob: 0.566667
+===
+[[0, 1, 1, 0, 0], [0, 1, 1, 0, 1], [0, 1, 1, 0, 2], [0, 1, 1, 0, 3], [0, 1, 1, 0, 4], [0, 1, 1, 1, 0], [0, 1, 1, 1, 1], [0, 1, 1, 1, 2], [0, 1, 1, 1, 3], [0, 1, 1, 1, 4], [0, 1, 1, 2, 0], [0, 1, 1, 2, 1], [0, 1, 1, 2, 2], [0, 1, 1, 2, 3], [0, 1, 1, 2, 4]]
+Info_set: 57   Action: 0  Prob: 0.333333
+Info_set: 57   Action: 1  Prob: 0.333333
+Info_set: 57   Action: 2  Prob: 0.333333
+
+    outside, 6men, 1yd
+===
+[[0, 1, 2, 0], [0, 1, 2, 1], [0, 1, 2, 2]]
+Info_set: 58   Action: 0  Prob: 0.066667
+Info_set: 58   Action: 1  Prob: 0.066667
+Info_set: 58   Action: 2  Prob: 0.066667
+Info_set: 58   Action: 3  Prob: 0.066667
+Info_set: 58   Action: 4  Prob: 0.733333
+===
+[[0, 1, 2, 0, 0], [0, 1, 2, 0, 1], [0, 1, 2, 0, 2], [0, 1, 2, 0, 3], [0, 1, 2, 0, 4], [0, 1, 2, 1, 0], [0, 1, 2, 1, 1], [0, 1, 2, 1, 2], [0, 1, 2, 1, 3], [0, 1, 2, 1, 4], [0, 1, 2, 2, 0], [0, 1, 2, 2, 1], [0, 1, 2, 2, 2], [0, 1, 2, 2, 3], [0, 1, 2, 2, 4]]
+Info_set: 59   Action: 0  Prob: 0.333333
+Info_set: 59   Action: 1  Prob: 0.333333
+Info_set: 59   Action: 2  Prob: 0.333333
+
+===
+[[0, 2, 0, 0], [0, 2, 0, 1], [0, 2, 0, 2]]
+Info_set: 60   Action: 0  Prob: 0.037220
+Info_set: 60   Action: 1  Prob: 0.037220
+Info_set: 60   Action: 2  Prob: 0.211627
+Info_set: 60   Action: 3  Prob: 0.502306
+Info_set: 60   Action: 4  Prob: 0.211627
+===
+[[0, 2, 0, 0, 0], [0, 2, 0, 0, 1], [0, 2, 0, 0, 2], [0, 2, 0, 0, 3], [0, 2, 0, 0, 4], [0, 2, 0, 1, 0], [0, 2, 0, 1, 1], [0, 2, 0, 1, 2], [0, 2, 0, 1, 3], [0, 2, 0, 1, 4], [0, 2, 0, 2, 0], [0, 2, 0, 2, 1], [0, 2, 0, 2, 2], [0, 2, 0, 2, 3], [0, 2, 0, 2, 4]]
+Info_set: 61   Action: 0  Prob: 0.000034
+Info_set: 61   Action: 1  Prob: 0.000034
+Info_set: 61   Action: 2  Prob: 0.999932
+
+===
+[[0, 2, 1, 0], [0, 2, 1, 1], [0, 2, 1, 2]]
+Info_set: 62   Action: 0  Prob: 0.037220
+Info_set: 62   Action: 1  Prob: 0.037220
+Info_set: 62   Action: 2  Prob: 0.211627
+Info_set: 62   Action: 3  Prob: 0.502306
+Info_set: 62   Action: 4  Prob: 0.211627
+===
+[[0, 2, 1, 0, 0], [0, 2, 1, 0, 1], [0, 2, 1, 0, 2], [0, 2, 1, 0, 3], [0, 2, 1, 0, 4], [0, 2, 1, 1, 0], [0, 2, 1, 1, 1], [0, 2, 1, 1, 2], [0, 2, 1, 1, 3], [0, 2, 1, 1, 4], [0, 2, 1, 2, 0], [0, 2, 1, 2, 1], [0, 2, 1, 2, 2], [0, 2, 1, 2, 3], [0, 2, 1, 2, 4]]
+Info_set: 63   Action: 0  Prob: 0.066667
+Info_set: 63   Action: 1  Prob: 0.066667
+Info_set: 63   Action: 2  Prob: 0.866667
+
+===
+[[0, 2, 2, 0], [0, 2, 2, 1], [0, 2, 2, 2]]
+Info_set: 64   Action: 0  Prob: 0.037220
+Info_set: 64   Action: 1  Prob: 0.037220
+Info_set: 64   Action: 2  Prob: 0.037220
+Info_set: 64   Action: 3  Prob: 0.718023
+Info_set: 64   Action: 4  Prob: 0.170317
+===
+[[0, 2, 2, 0, 0], [0, 2, 2, 0, 1], [0, 2, 2, 0, 2], [0, 2, 2, 0, 3], [0, 2, 2, 0, 4], [0, 2, 2, 1, 0], [0, 2, 2, 1, 1], [0, 2, 2, 1, 2], [0, 2, 2, 1, 3], [0, 2, 2, 1, 4], [0, 2, 2, 2, 0], [0, 2, 2, 2, 1], [0, 2, 2, 2, 2], [0, 2, 2, 2, 3], [0, 2, 2, 2, 4]]
+Info_set: 65   Action: 0  Prob: 0.431819
+Info_set: 65   Action: 1  Prob: 0.000086
+Info_set: 65   Action: 2  Prob: 0.568095
+
+    middle, 4men, 6yd
+===
+[[0, 3, 0, 0], [0, 3, 0, 1], [0, 3, 0, 2]]
+Info_set: 66   Action: 0  Prob: 0.000013
+Info_set: 66   Action: 1  Prob: 0.000013
+Info_set: 66   Action: 2  Prob: 0.000216
+Info_set: 66   Action: 3  Prob: 0.999542
+Info_set: 66   Action: 4  Prob: 0.000216
+===
+[[0, 3, 0, 0, 0], [0, 3, 0, 0, 1], [0, 3, 0, 0, 2], [0, 3, 0, 0, 3], [0, 3, 0, 0, 4], [0, 3, 0, 1, 0], [0, 3, 0, 1, 1], [0, 3, 0, 1, 2], [0, 3, 0, 1, 3], [0, 3, 0, 1, 4], [0, 3, 0, 2, 0], [0, 3, 0, 2, 1], [0, 3, 0, 2, 2], [0, 3, 0, 2, 3], [0, 3, 0, 2, 4]]
+Info_set: 67   Action: 0  Prob: 0.000000
+Info_set: 67   Action: 1  Prob: 0.000000
+Info_set: 67   Action: 2  Prob: 1.000000
+
+    middle, 5men, 7yd
+===
+[[0, 3, 1, 0], [0, 3, 1, 1], [0, 3, 1, 2]]
+Info_set: 68   Action: 0  Prob: 0.000013
+Info_set: 68   Action: 1  Prob: 0.000013
+Info_set: 68   Action: 2  Prob: 0.333324
+Info_set: 68   Action: 3  Prob: 0.333324
+Info_set: 68   Action: 4  Prob: 0.333324
+===
+[[0, 3, 1, 0, 0], [0, 3, 1, 0, 1], [0, 3, 1, 0, 2], [0, 3, 1, 0, 3], [0, 3, 1, 0, 4], [0, 3, 1, 1, 0], [0, 3, 1, 1, 1], [0, 3, 1, 1, 2], [0, 3, 1, 1, 3], [0, 3, 1, 1, 4], [0, 3, 1, 2, 0], [0, 3, 1, 2, 1], [0, 3, 1, 2, 2], [0, 3, 1, 2, 3], [0, 3, 1, 2, 4]]
+Info_set: 69   Action: 0  Prob: N/A
+Info_set: 69   Action: 1  Prob: N/A
+Info_set: 69   Action: 2  Prob: N/A
+
+    middle, 6men, 5yd
+===
+[[0, 3, 2, 0], [0, 3, 2, 1], [0, 3, 2, 2]]
+Info_set: 70   Action: 0  Prob: 0.000013
+Info_set: 70   Action: 1  Prob: 0.000013
+Info_set: 70   Action: 2  Prob: 0.000076
+Info_set: 70   Action: 3  Prob: 0.999821
+Info_set: 70   Action: 4  Prob: 0.000076
+===
+[[0, 3, 2, 0, 0], [0, 3, 2, 0, 1], [0, 3, 2, 0, 2], [0, 3, 2, 0, 3], [0, 3, 2, 0, 4], [0, 3, 2, 1, 0], [0, 3, 2, 1, 1], [0, 3, 2, 1, 2], [0, 3, 2, 1, 3], [0, 3, 2, 1, 4], [0, 3, 2, 2, 0], [0, 3, 2, 2, 1], [0, 3, 2, 2, 2], [0, 3, 2, 2, 3], [0, 3, 2, 2, 4]]
+Info_set: 71   Action: 0  Prob: 0.000193
+Info_set: 71   Action: 1  Prob: 0.000193
+Info_set: 71   Action: 2  Prob: 0.999614
+
+===
+[[0, 4, 0, 0], [0, 4, 0, 1], [0, 4, 0, 2]]
+Info_set: 72   Action: 0  Prob: 0.023582
+Info_set: 72   Action: 1  Prob: 0.023582
+Info_set: 72   Action: 2  Prob: 0.212601
+Info_set: 72   Action: 3  Prob: 0.527633
+Info_set: 72   Action: 4  Prob: 0.212601
+===
+[[0, 4, 0, 0, 0], [0, 4, 0, 0, 1], [0, 4, 0, 0, 2], [0, 4, 0, 0, 3], [0, 4, 0, 0, 4], [0, 4, 0, 1, 0], [0, 4, 0, 1, 1], [0, 4, 0, 1, 2], [0, 4, 0, 1, 3], [0, 4, 0, 1, 4], [0, 4, 0, 2, 0], [0, 4, 0, 2, 1], [0, 4, 0, 2, 2], [0, 4, 0, 2, 3], [0, 4, 0, 2, 4]]
+Info_set: 73   Action: 0  Prob: 0.000000
+Info_set: 73   Action: 1  Prob: 0.000000
+Info_set: 73   Action: 2  Prob: 1.000000
+
+===
+[[0, 4, 1, 0], [0, 4, 1, 1], [0, 4, 1, 2]]
+Info_set: 74   Action: 0  Prob: N/A
+Info_set: 74   Action: 1  Prob: N/A
+Info_set: 74   Action: 2  Prob: N/A
+Info_set: 74   Action: 3  Prob: N/A
+Info_set: 74   Action: 4  Prob: N/A
+===
+[[0, 4, 1, 0, 0], [0, 4, 1, 0, 1], [0, 4, 1, 0, 2], [0, 4, 1, 0, 3], [0, 4, 1, 0, 4], [0, 4, 1, 1, 0], [0, 4, 1, 1, 1], [0, 4, 1, 1, 2], [0, 4, 1, 1, 3], [0, 4, 1, 1, 4], [0, 4, 1, 2, 0], [0, 4, 1, 2, 1], [0, 4, 1, 2, 2], [0, 4, 1, 2, 3], [0, 4, 1, 2, 4]]
+Info_set: 75   Action: 0  Prob: N/A
+Info_set: 75   Action: 1  Prob: N/A
+Info_set: 75   Action: 2  Prob: N/A
+
+===
+[[0, 4, 2, 0], [0, 4, 2, 1], [0, 4, 2, 2]]
+Info_set: 76   Action: 0  Prob: 0.023582
+Info_set: 76   Action: 1  Prob: 0.023582
+Info_set: 76   Action: 2  Prob: 0.023582
+Info_set: 76   Action: 3  Prob: 0.800985
+Info_set: 76   Action: 4  Prob: 0.128268
+===
+[[0, 4, 2, 0, 0], [0, 4, 2, 0, 1], [0, 4, 2, 0, 2], [0, 4, 2, 0, 3], [0, 4, 2, 0, 4], [0, 4, 2, 1, 0], [0, 4, 2, 1, 1], [0, 4, 2, 1, 2], [0, 4, 2, 1, 3], [0, 4, 2, 1, 4], [0, 4, 2, 2, 0], [0, 4, 2, 2, 1], [0, 4, 2, 2, 2], [0, 4, 2, 2, 3], [0, 4, 2, 2, 4]]
+Info_set: 77   Action: 0  Prob: 0.431821
+Info_set: 77   Action: 1  Prob: 0.000258
+Info_set: 77   Action: 2  Prob: 0.567921
+
+    inside, 4men, 3yd
+===
+[[1, 0, 0, 0], [1, 0, 0, 1], [1, 0, 0, 2]]
+Info_set: 78   Action: 0  Prob: N/A
+Info_set: 78   Action: 1  Prob: N/A
+Info_set: 78   Action: 2  Prob: N/A
+Info_set: 78   Action: 3  Prob: N/A
+Info_set: 78   Action: 4  Prob: N/A
+===
+[[1, 0, 0, 0, 0], [1, 0, 0, 0, 1], [1, 0, 0, 0, 2], [1, 0, 0, 0, 3], [1, 0, 0, 0, 4], [1, 0, 0, 1, 0], [1, 0, 0, 1, 1], [1, 0, 0, 1, 2], [1, 0, 0, 1, 3], [1, 0, 0, 1, 4], [1, 0, 0, 2, 0], [1, 0, 0, 2, 1], [1, 0, 0, 2, 2], [1, 0, 0, 2, 3], [1, 0, 0, 2, 4]]
+Info_set: 79   Action: 0  Prob: 0.333333
+Info_set: 79   Action: 1  Prob: 0.333333
+Info_set: 79   Action: 2  Prob: 0.333333
+
+===
+[[1, 0, 1, 0], [1, 0, 1, 1], [1, 0, 1, 2]]
+Info_set: 80   Action: 0  Prob: N/A
+Info_set: 80   Action: 1  Prob: N/A
+Info_set: 80   Action: 2  Prob: N/A
+Info_set: 80   Action: 3  Prob: N/A
+Info_set: 80   Action: 4  Prob: N/A
+===
+[[1, 0, 1, 0, 0], [1, 0, 1, 0, 1], [1, 0, 1, 0, 2], [1, 0, 1, 0, 3], [1, 0, 1, 0, 4], [1, 0, 1, 1, 0], [1, 0, 1, 1, 1], [1, 0, 1, 1, 2], [1, 0, 1, 1, 3], [1, 0, 1, 1, 4], [1, 0, 1, 2, 0], [1, 0, 1, 2, 1], [1, 0, 1, 2, 2], [1, 0, 1, 2, 3], [1, 0, 1, 2, 4]]
+Info_set: 81   Action: 0  Prob: N/A
+Info_set: 81   Action: 1  Prob: N/A
+Info_set: 81   Action: 2  Prob: N/A
+
+===
+[[1, 0, 2, 0], [1, 0, 2, 1], [1, 0, 2, 2]]
+Info_set: 82   Action: 0  Prob: N/A
+Info_set: 82   Action: 1  Prob: N/A
+Info_set: 82   Action: 2  Prob: N/A
+Info_set: 82   Action: 3  Prob: N/A
+Info_set: 82   Action: 4  Prob: N/A
+===
+[[1, 0, 2, 0, 0], [1, 0, 2, 0, 1], [1, 0, 2, 0, 2], [1, 0, 2, 0, 3], [1, 0, 2, 0, 4], [1, 0, 2, 1, 0], [1, 0, 2, 1, 1], [1, 0, 2, 1, 2], [1, 0, 2, 1, 3], [1, 0, 2, 1, 4], [1, 0, 2, 2, 0], [1, 0, 2, 2, 1], [1, 0, 2, 2, 2], [1, 0, 2, 2, 3], [1, 0, 2, 2, 4]]
+Info_set: 83   Action: 0  Prob: 0.333333
+Info_set: 83   Action: 1  Prob: 0.333333
+Info_set: 83   Action: 2  Prob: 0.333333
+
+===
+[[1, 1, 0, 0], [1, 1, 0, 1], [1, 1, 0, 2]]
+Info_set: 84   Action: 0  Prob: N/A
+Info_set: 84   Action: 1  Prob: N/A
+Info_set: 84   Action: 2  Prob: N/A
+Info_set: 84   Action: 3  Prob: N/A
+Info_set: 84   Action: 4  Prob: N/A
+===
+[[1, 1, 0, 0, 0], [1, 1, 0, 0, 1], [1, 1, 0, 0, 2], [1, 1, 0, 0, 3], [1, 1, 0, 0, 4], [1, 1, 0, 1, 0], [1, 1, 0, 1, 1], [1, 1, 0, 1, 2], [1, 1, 0, 1, 3], [1, 1, 0, 1, 4], [1, 1, 0, 2, 0], [1, 1, 0, 2, 1], [1, 1, 0, 2, 2], [1, 1, 0, 2, 3], [1, 1, 0, 2, 4]]
+Info_set: 85   Action: 0  Prob: 0.333333
+Info_set: 85   Action: 1  Prob: 0.333333
+Info_set: 85   Action: 2  Prob: 0.333333
+
+===
+[[1, 1, 1, 0], [1, 1, 1, 1], [1, 1, 1, 2]]
+Info_set: 86   Action: 0  Prob: N/A
+Info_set: 86   Action: 1  Prob: N/A
+Info_set: 86   Action: 2  Prob: N/A
+Info_set: 86   Action: 3  Prob: N/A
+Info_set: 86   Action: 4  Prob: N/A
+===
+[[1, 1, 1, 0, 0], [1, 1, 1, 0, 1], [1, 1, 1, 0, 2], [1, 1, 1, 0, 3], [1, 1, 1, 0, 4], [1, 1, 1, 1, 0], [1, 1, 1, 1, 1], [1, 1, 1, 1, 2], [1, 1, 1, 1, 3], [1, 1, 1, 1, 4], [1, 1, 1, 2, 0], [1, 1, 1, 2, 1], [1, 1, 1, 2, 2], [1, 1, 1, 2, 3], [1, 1, 1, 2, 4]]
+Info_set: 87   Action: 0  Prob: N/A
+Info_set: 87   Action: 1  Prob: N/A
+Info_set: 87   Action: 2  Prob: N/A
+
+===
+[[1, 1, 2, 0], [1, 1, 2, 1], [1, 1, 2, 2]]
+Info_set: 88   Action: 0  Prob: N/A
+Info_set: 88   Action: 1  Prob: N/A
+Info_set: 88   Action: 2  Prob: N/A
+Info_set: 88   Action: 3  Prob: N/A
+Info_set: 88   Action: 4  Prob: N/A
+===
+[[1, 1, 2, 0, 0], [1, 1, 2, 0, 1], [1, 1, 2, 0, 2], [1, 1, 2, 0, 3], [1, 1, 2, 0, 4], [1, 1, 2, 1, 0], [1, 1, 2, 1, 1], [1, 1, 2, 1, 2], [1, 1, 2, 1, 3], [1, 1, 2, 1, 4], [1, 1, 2, 2, 0], [1, 1, 2, 2, 1], [1, 1, 2, 2, 2], [1, 1, 2, 2, 3], [1, 1, 2, 2, 4]]
+Info_set: 89   Action: 0  Prob: 0.333333
+Info_set: 89   Action: 1  Prob: 0.333333
+Info_set: 89   Action: 2  Prob: 0.333333
+
+===
+[[1, 2, 0, 0], [1, 2, 0, 1], [1, 2, 0, 2]]
+Info_set: 90   Action: 0  Prob: 0.066667
+Info_set: 90   Action: 1  Prob: 0.066667
+Info_set: 90   Action: 2  Prob: 0.288889
+Info_set: 90   Action: 3  Prob: 0.288889
+Info_set: 90   Action: 4  Prob: 0.288889
+===
+[[1, 2, 0, 0, 0], [1, 2, 0, 0, 1], [1, 2, 0, 0, 2], [1, 2, 0, 0, 3], [1, 2, 0, 0, 4], [1, 2, 0, 1, 0], [1, 2, 0, 1, 1], [1, 2, 0, 1, 2], [1, 2, 0, 1, 3], [1, 2, 0, 1, 4], [1, 2, 0, 2, 0], [1, 2, 0, 2, 1], [1, 2, 0, 2, 2], [1, 2, 0, 2, 3], [1, 2, 0, 2, 4]]
+Info_set: 91   Action: 0  Prob: 0.333333
+Info_set: 91   Action: 1  Prob: 0.333333
+Info_set: 91   Action: 2  Prob: 0.333333
+
+===
+[[1, 2, 1, 0], [1, 2, 1, 1], [1, 2, 1, 2]]
+Info_set: 92   Action: 0  Prob: 0.066667
+Info_set: 92   Action: 1  Prob: 0.066667
+Info_set: 92   Action: 2  Prob: 0.288889
+Info_set: 92   Action: 3  Prob: 0.288889
+Info_set: 92   Action: 4  Prob: 0.288889
+===
+[[1, 2, 1, 0, 0], [1, 2, 1, 0, 1], [1, 2, 1, 0, 2], [1, 2, 1, 0, 3], [1, 2, 1, 0, 4], [1, 2, 1, 1, 0], [1, 2, 1, 1, 1], [1, 2, 1, 1, 2], [1, 2, 1, 1, 3], [1, 2, 1, 1, 4], [1, 2, 1, 2, 0], [1, 2, 1, 2, 1], [1, 2, 1, 2, 2], [1, 2, 1, 2, 3], [1, 2, 1, 2, 4]]
+Info_set: 93   Action: 0  Prob: N/A
+Info_set: 93   Action: 1  Prob: N/A
+Info_set: 93   Action: 2  Prob: N/A
+
+===
+[[1, 2, 2, 0], [1, 2, 2, 1], [1, 2, 2, 2]]
+Info_set: 94   Action: 0  Prob: 0.066667
+Info_set: 94   Action: 1  Prob: 0.066667
+Info_set: 94   Action: 2  Prob: 0.209524
+Info_set: 94   Action: 3  Prob: 0.447619
+Info_set: 94   Action: 4  Prob: 0.209524
+===
+[[1, 2, 2, 0, 0], [1, 2, 2, 0, 1], [1, 2, 2, 0, 2], [1, 2, 2, 0, 3], [1, 2, 2, 0, 4], [1, 2, 2, 1, 0], [1, 2, 2, 1, 1], [1, 2, 2, 1, 2], [1, 2, 2, 1, 3], [1, 2, 2, 1, 4], [1, 2, 2, 2, 0], [1, 2, 2, 2, 1], [1, 2, 2, 2, 2], [1, 2, 2, 2, 3], [1, 2, 2, 2, 4]]
+Info_set: 95   Action: 0  Prob: 0.000193
+Info_set: 95   Action: 1  Prob: 0.000193
+Info_set: 95   Action: 2  Prob: 0.999613
+
+===
+[[1, 3, 0, 0], [1, 3, 0, 1], [1, 3, 0, 2]]
+Info_set: 96   Action: 0  Prob: 0.000026
+Info_set: 96   Action: 1  Prob: 0.000026
+Info_set: 96   Action: 2  Prob: 0.333316
+Info_set: 96   Action: 3  Prob: 0.333316
+Info_set: 96   Action: 4  Prob: 0.333316
+===
+[[1, 3, 0, 0, 0], [1, 3, 0, 0, 1], [1, 3, 0, 0, 2], [1, 3, 0, 0, 3], [1, 3, 0, 0, 4], [1, 3, 0, 1, 0], [1, 3, 0, 1, 1], [1, 3, 0, 1, 2], [1, 3, 0, 1, 3], [1, 3, 0, 1, 4], [1, 3, 0, 2, 0], [1, 3, 0, 2, 1], [1, 3, 0, 2, 2], [1, 3, 0, 2, 3], [1, 3, 0, 2, 4]]
+Info_set: 97   Action: 0  Prob: 0.333333
+Info_set: 97   Action: 1  Prob: 0.333333
+Info_set: 97   Action: 2  Prob: 0.333333
+
+===
+[[1, 3, 1, 0], [1, 3, 1, 1], [1, 3, 1, 2]]
+Info_set: 98   Action: 0  Prob: 0.000026
+Info_set: 98   Action: 1  Prob: 0.249994
+Info_set: 98   Action: 2  Prob: 0.249994
+Info_set: 98   Action: 3  Prob: 0.249994
+Info_set: 98   Action: 4  Prob: 0.249994
+===
+[[1, 3, 1, 0, 0], [1, 3, 1, 0, 1], [1, 3, 1, 0, 2], [1, 3, 1, 0, 3], [1, 3, 1, 0, 4], [1, 3, 1, 1, 0], [1, 3, 1, 1, 1], [1, 3, 1, 1, 2], [1, 3, 1, 1, 3], [1, 3, 1, 1, 4], [1, 3, 1, 2, 0], [1, 3, 1, 2, 1], [1, 3, 1, 2, 2], [1, 3, 1, 2, 3], [1, 3, 1, 2, 4]]
+Info_set: 99   Action: 0  Prob: N/A
+Info_set: 99   Action: 1  Prob: N/A
+Info_set: 99   Action: 2  Prob: N/A
+
+===
+[[1, 3, 2, 0], [1, 3, 2, 1], [1, 3, 2, 2]]
+Info_set: 100   Action: 0  Prob: 0.000026
+Info_set: 100   Action: 1  Prob: 0.000026
+Info_set: 100   Action: 2  Prob: 0.333316
+Info_set: 100   Action: 3  Prob: 0.333316
+Info_set: 100   Action: 4  Prob: 0.333316
+===
+[[1, 3, 2, 0, 0], [1, 3, 2, 0, 1], [1, 3, 2, 0, 2], [1, 3, 2, 0, 3], [1, 3, 2, 0, 4], [1, 3, 2, 1, 0], [1, 3, 2, 1, 1], [1, 3, 2, 1, 2], [1, 3, 2, 1, 3], [1, 3, 2, 1, 4], [1, 3, 2, 2, 0], [1, 3, 2, 2, 1], [1, 3, 2, 2, 2], [1, 3, 2, 2, 3], [1, 3, 2, 2, 4]]
+Info_set: 101   Action: 0  Prob: 0.333333
+Info_set: 101   Action: 1  Prob: 0.333333
+Info_set: 101   Action: 2  Prob: 0.333333
+
+===
+[[1, 4, 0, 0], [1, 4, 0, 1], [1, 4, 0, 2]]
+Info_set: 102   Action: 0  Prob: 0.043307
+Info_set: 102   Action: 1  Prob: 0.043307
+Info_set: 102   Action: 2  Prob: 0.304462
+Info_set: 102   Action: 3  Prob: 0.304462
+Info_set: 102   Action: 4  Prob: 0.304462
+===
+[[1, 4, 0, 0, 0], [1, 4, 0, 0, 1], [1, 4, 0, 0, 2], [1, 4, 0, 0, 3], [1, 4, 0, 0, 4], [1, 4, 0, 1, 0], [1, 4, 0, 1, 1], [1, 4, 0, 1, 2], [1, 4, 0, 1, 3], [1, 4, 0, 1, 4], [1, 4, 0, 2, 0], [1, 4, 0, 2, 1], [1, 4, 0, 2, 2], [1, 4, 0, 2, 3], [1, 4, 0, 2, 4]]
+Info_set: 103   Action: 0  Prob: 0.333333
+Info_set: 103   Action: 1  Prob: 0.333333
+Info_set: 103   Action: 2  Prob: 0.333333
+
+===
+[[1, 4, 1, 0], [1, 4, 1, 1], [1, 4, 1, 2]]
+Info_set: 104   Action: 0  Prob: N/A
+Info_set: 104   Action: 1  Prob: N/A
+Info_set: 104   Action: 2  Prob: N/A
+Info_set: 104   Action: 3  Prob: N/A
+Info_set: 104   Action: 4  Prob: N/A
+===
+[[1, 4, 1, 0, 0], [1, 4, 1, 0, 1], [1, 4, 1, 0, 2], [1, 4, 1, 0, 3], [1, 4, 1, 0, 4], [1, 4, 1, 1, 0], [1, 4, 1, 1, 1], [1, 4, 1, 1, 2], [1, 4, 1, 1, 3], [1, 4, 1, 1, 4], [1, 4, 1, 2, 0], [1, 4, 1, 2, 1], [1, 4, 1, 2, 2], [1, 4, 1, 2, 3], [1, 4, 1, 2, 4]]
+Info_set: 105   Action: 0  Prob: N/A
+Info_set: 105   Action: 1  Prob: N/A
+Info_set: 105   Action: 2  Prob: N/A
+
+===
+[[1, 4, 2, 0], [1, 4, 2, 1], [1, 4, 2, 2]]
+Info_set: 106   Action: 0  Prob: 0.043307
+Info_set: 106   Action: 1  Prob: 0.043307
+Info_set: 106   Action: 2  Prob: 0.161135
+Info_set: 106   Action: 3  Prob: 0.591117
+Info_set: 106   Action: 4  Prob: 0.161135
+===
+[[1, 4, 2, 0, 0], [1, 4, 2, 0, 1], [1, 4, 2, 0, 2], [1, 4, 2, 0, 3], [1, 4, 2, 0, 4], [1, 4, 2, 1, 0], [1, 4, 2, 1, 1], [1, 4, 2, 1, 2], [1, 4, 2, 1, 3], [1, 4, 2, 1, 4], [1, 4, 2, 2, 0], [1, 4, 2, 2, 1], [1, 4, 2, 2, 2], [1, 4, 2, 2, 3], [1, 4, 2, 2, 4]]
+Info_set: 107   Action: 0  Prob: 0.000193
+Info_set: 107   Action: 1  Prob: 0.000193
+Info_set: 107   Action: 2  Prob: 0.999613
+
+===
+[[2, 0, 0, 0], [2, 0, 0, 1], [2, 0, 0, 2]]
+Info_set: 108   Action: 0  Prob: N/A
+Info_set: 108   Action: 1  Prob: N/A
+Info_set: 108   Action: 2  Prob: N/A
+Info_set: 108   Action: 3  Prob: N/A
+Info_set: 108   Action: 4  Prob: N/A
+===
+[[2, 0, 0, 0, 0], [2, 0, 0, 0, 1], [2, 0, 0, 0, 2], [2, 0, 0, 0, 3], [2, 0, 0, 0, 4], [2, 0, 0, 1, 0], [2, 0, 0, 1, 1], [2, 0, 0, 1, 2], [2, 0, 0, 1, 3], [2, 0, 0, 1, 4], [2, 0, 0, 2, 0], [2, 0, 0, 2, 1], [2, 0, 0, 2, 2], [2, 0, 0, 2, 3], [2, 0, 0, 2, 4]]
+Info_set: 109   Action: 0  Prob: 0.333333
+Info_set: 109   Action: 1  Prob: 0.333333
+Info_set: 109   Action: 2  Prob: 0.333333
+
+===
+[[2, 0, 1, 0], [2, 0, 1, 1], [2, 0, 1, 2]]
+Info_set: 110   Action: 0  Prob: N/A
+Info_set: 110   Action: 1  Prob: N/A
+Info_set: 110   Action: 2  Prob: N/A
+Info_set: 110   Action: 3  Prob: N/A
+Info_set: 110   Action: 4  Prob: N/A
+===
+[[2, 0, 1, 0, 0], [2, 0, 1, 0, 1], [2, 0, 1, 0, 2], [2, 0, 1, 0, 3], [2, 0, 1, 0, 4], [2, 0, 1, 1, 0], [2, 0, 1, 1, 1], [2, 0, 1, 1, 2], [2, 0, 1, 1, 3], [2, 0, 1, 1, 4], [2, 0, 1, 2, 0], [2, 0, 1, 2, 1], [2, 0, 1, 2, 2], [2, 0, 1, 2, 3], [2, 0, 1, 2, 4]]
+Info_set: 111   Action: 0  Prob: N/A
+Info_set: 111   Action: 1  Prob: N/A
+Info_set: 111   Action: 2  Prob: N/A
+
+===
+[[2, 0, 2, 0], [2, 0, 2, 1], [2, 0, 2, 2]]
+Info_set: 112   Action: 0  Prob: N/A
+Info_set: 112   Action: 1  Prob: N/A
+Info_set: 112   Action: 2  Prob: N/A
+Info_set: 112   Action: 3  Prob: N/A
+Info_set: 112   Action: 4  Prob: N/A
+===
+[[2, 0, 2, 0, 0], [2, 0, 2, 0, 1], [2, 0, 2, 0, 2], [2, 0, 2, 0, 3], [2, 0, 2, 0, 4], [2, 0, 2, 1, 0], [2, 0, 2, 1, 1], [2, 0, 2, 1, 2], [2, 0, 2, 1, 3], [2, 0, 2, 1, 4], [2, 0, 2, 2, 0], [2, 0, 2, 2, 1], [2, 0, 2, 2, 2], [2, 0, 2, 2, 3], [2, 0, 2, 2, 4]]
+Info_set: 113   Action: 0  Prob: 0.333333
+Info_set: 113   Action: 1  Prob: 0.333333
+Info_set: 113   Action: 2  Prob: 0.333333
+
+===
+[[2, 1, 0, 0], [2, 1, 0, 1], [2, 1, 0, 2]]
+Info_set: 114   Action: 0  Prob: N/A
+Info_set: 114   Action: 1  Prob: N/A
+Info_set: 114   Action: 2  Prob: N/A
+Info_set: 114   Action: 3  Prob: N/A
+Info_set: 114   Action: 4  Prob: N/A
+===
+[[2, 1, 0, 0, 0], [2, 1, 0, 0, 1], [2, 1, 0, 0, 2], [2, 1, 0, 0, 3], [2, 1, 0, 0, 4], [2, 1, 0, 1, 0], [2, 1, 0, 1, 1], [2, 1, 0, 1, 2], [2, 1, 0, 1, 3], [2, 1, 0, 1, 4], [2, 1, 0, 2, 0], [2, 1, 0, 2, 1], [2, 1, 0, 2, 2], [2, 1, 0, 2, 3], [2, 1, 0, 2, 4]]
+Info_set: 115   Action: 0  Prob: 0.333333
+Info_set: 115   Action: 1  Prob: 0.333333
+Info_set: 115   Action: 2  Prob: 0.333333
+
+===
+[[2, 1, 1, 0], [2, 1, 1, 1], [2, 1, 1, 2]]
+Info_set: 116   Action: 0  Prob: N/A
+Info_set: 116   Action: 1  Prob: N/A
+Info_set: 116   Action: 2  Prob: N/A
+Info_set: 116   Action: 3  Prob: N/A
+Info_set: 116   Action: 4  Prob: N/A
+===
+[[2, 1, 1, 0, 0], [2, 1, 1, 0, 1], [2, 1, 1, 0, 2], [2, 1, 1, 0, 3], [2, 1, 1, 0, 4], [2, 1, 1, 1, 0], [2, 1, 1, 1, 1], [2, 1, 1, 1, 2], [2, 1, 1, 1, 3], [2, 1, 1, 1, 4], [2, 1, 1, 2, 0], [2, 1, 1, 2, 1], [2, 1, 1, 2, 2], [2, 1, 1, 2, 3], [2, 1, 1, 2, 4]]
+Info_set: 117   Action: 0  Prob: N/A
+Info_set: 117   Action: 1  Prob: N/A
+Info_set: 117   Action: 2  Prob: N/A
+
+===
+[[2, 1, 2, 0], [2, 1, 2, 1], [2, 1, 2, 2]]
+Info_set: 118   Action: 0  Prob: N/A
+Info_set: 118   Action: 1  Prob: N/A
+Info_set: 118   Action: 2  Prob: N/A
+Info_set: 118   Action: 3  Prob: N/A
+Info_set: 118   Action: 4  Prob: N/A
+===
+[[2, 1, 2, 0, 0], [2, 1, 2, 0, 1], [2, 1, 2, 0, 2], [2, 1, 2, 0, 3], [2, 1, 2, 0, 4], [2, 1, 2, 1, 0], [2, 1, 2, 1, 1], [2, 1, 2, 1, 2], [2, 1, 2, 1, 3], [2, 1, 2, 1, 4], [2, 1, 2, 2, 0], [2, 1, 2, 2, 1], [2, 1, 2, 2, 2], [2, 1, 2, 2, 3], [2, 1, 2, 2, 4]]
+Info_set: 119   Action: 0  Prob: 0.333333
+Info_set: 119   Action: 1  Prob: 0.333333
+Info_set: 119   Action: 2  Prob: 0.333333
+
+===
+[[2, 2, 0, 0], [2, 2, 0, 1], [2, 2, 0, 2]]
+Info_set: 120   Action: 0  Prob: N/A
+Info_set: 120   Action: 1  Prob: N/A
+Info_set: 120   Action: 2  Prob: N/A
+Info_set: 120   Action: 3  Prob: N/A
+Info_set: 120   Action: 4  Prob: N/A
+===
+[[2, 2, 0, 0, 0], [2, 2, 0, 0, 1], [2, 2, 0, 0, 2], [2, 2, 0, 0, 3], [2, 2, 0, 0, 4], [2, 2, 0, 1, 0], [2, 2, 0, 1, 1], [2, 2, 0, 1, 2], [2, 2, 0, 1, 3], [2, 2, 0, 1, 4], [2, 2, 0, 2, 0], [2, 2, 0, 2, 1], [2, 2, 0, 2, 2], [2, 2, 0, 2, 3], [2, 2, 0, 2, 4]]
+Info_set: 121   Action: 0  Prob: N/A
+Info_set: 121   Action: 1  Prob: N/A
+Info_set: 121   Action: 2  Prob: N/A
+
+===
+[[2, 2, 1, 0], [2, 2, 1, 1], [2, 2, 1, 2]]
+Info_set: 122   Action: 0  Prob: N/A
+Info_set: 122   Action: 1  Prob: N/A
+Info_set: 122   Action: 2  Prob: N/A
+Info_set: 122   Action: 3  Prob: N/A
+Info_set: 122   Action: 4  Prob: N/A
+===
+[[2, 2, 1, 0, 0], [2, 2, 1, 0, 1], [2, 2, 1, 0, 2], [2, 2, 1, 0, 3], [2, 2, 1, 0, 4], [2, 2, 1, 1, 0], [2, 2, 1, 1, 1], [2, 2, 1, 1, 2], [2, 2, 1, 1, 3], [2, 2, 1, 1, 4], [2, 2, 1, 2, 0], [2, 2, 1, 2, 1], [2, 2, 1, 2, 2], [2, 2, 1, 2, 3], [2, 2, 1, 2, 4]]
+Info_set: 123   Action: 0  Prob: N/A
+Info_set: 123   Action: 1  Prob: N/A
+Info_set: 123   Action: 2  Prob: N/A
+
+===
+[[2, 2, 2, 0], [2, 2, 2, 1], [2, 2, 2, 2]]
+Info_set: 124   Action: 0  Prob: 0.066667
+Info_set: 124   Action: 1  Prob: 0.066667
+Info_set: 124   Action: 2  Prob: 0.288889
+Info_set: 124   Action: 3  Prob: 0.288889
+Info_set: 124   Action: 4  Prob: 0.288889
+===
+[[2, 2, 2, 0, 0], [2, 2, 2, 0, 1], [2, 2, 2, 0, 2], [2, 2, 2, 0, 3], [2, 2, 2, 0, 4], [2, 2, 2, 1, 0], [2, 2, 2, 1, 1], [2, 2, 2, 1, 2], [2, 2, 2, 1, 3], [2, 2, 2, 1, 4], [2, 2, 2, 2, 0], [2, 2, 2, 2, 1], [2, 2, 2, 2, 2], [2, 2, 2, 2, 3], [2, 2, 2, 2, 4]]
+Info_set: 125   Action: 0  Prob: 0.333333
+Info_set: 125   Action: 1  Prob: 0.333333
+Info_set: 125   Action: 2  Prob: 0.333333
+
+===
+[[2, 3, 0, 0], [2, 3, 0, 1], [2, 3, 0, 2]]
+Info_set: 126   Action: 0  Prob: N/A
+Info_set: 126   Action: 1  Prob: N/A
+Info_set: 126   Action: 2  Prob: N/A
+Info_set: 126   Action: 3  Prob: N/A
+Info_set: 126   Action: 4  Prob: N/A
+===
+[[2, 3, 0, 0, 0], [2, 3, 0, 0, 1], [2, 3, 0, 0, 2], [2, 3, 0, 0, 3], [2, 3, 0, 0, 4], [2, 3, 0, 1, 0], [2, 3, 0, 1, 1], [2, 3, 0, 1, 2], [2, 3, 0, 1, 3], [2, 3, 0, 1, 4], [2, 3, 0, 2, 0], [2, 3, 0, 2, 1], [2, 3, 0, 2, 2], [2, 3, 0, 2, 3], [2, 3, 0, 2, 4]]
+Info_set: 127   Action: 0  Prob: N/A
+Info_set: 127   Action: 1  Prob: N/A
+Info_set: 127   Action: 2  Prob: N/A
+
+===
+[[2, 3, 1, 0], [2, 3, 1, 1], [2, 3, 1, 2]]
+Info_set: 128   Action: 0  Prob: N/A
+Info_set: 128   Action: 1  Prob: N/A
+Info_set: 128   Action: 2  Prob: N/A
+Info_set: 128   Action: 3  Prob: N/A
+Info_set: 128   Action: 4  Prob: N/A
+===
+[[2, 3, 1, 0, 0], [2, 3, 1, 0, 1], [2, 3, 1, 0, 2], [2, 3, 1, 0, 3], [2, 3, 1, 0, 4], [2, 3, 1, 1, 0], [2, 3, 1, 1, 1], [2, 3, 1, 1, 2], [2, 3, 1, 1, 3], [2, 3, 1, 1, 4], [2, 3, 1, 2, 0], [2, 3, 1, 2, 1], [2, 3, 1, 2, 2], [2, 3, 1, 2, 3], [2, 3, 1, 2, 4]]
+Info_set: 129   Action: 0  Prob: N/A
+Info_set: 129   Action: 1  Prob: N/A
+Info_set: 129   Action: 2  Prob: N/A
+
+===
+[[2, 3, 2, 0], [2, 3, 2, 1], [2, 3, 2, 2]]
+Info_set: 130   Action: 0  Prob: N/A
+Info_set: 130   Action: 1  Prob: N/A
+Info_set: 130   Action: 2  Prob: N/A
+Info_set: 130   Action: 3  Prob: N/A
+Info_set: 130   Action: 4  Prob: N/A
+===
+[[2, 3, 2, 0, 0], [2, 3, 2, 0, 1], [2, 3, 2, 0, 2], [2, 3, 2, 0, 3], [2, 3, 2, 0, 4], [2, 3, 2, 1, 0], [2, 3, 2, 1, 1], [2, 3, 2, 1, 2], [2, 3, 2, 1, 3], [2, 3, 2, 1, 4], [2, 3, 2, 2, 0], [2, 3, 2, 2, 1], [2, 3, 2, 2, 2], [2, 3, 2, 2, 3], [2, 3, 2, 2, 4]]
+Info_set: 131   Action: 0  Prob: N/A
+Info_set: 131   Action: 1  Prob: N/A
+Info_set: 131   Action: 2  Prob: N/A
+
+===
+[[2, 4, 0, 0], [2, 4, 0, 1], [2, 4, 0, 2]]
+Info_set: 132   Action: 0  Prob: N/A
+Info_set: 132   Action: 1  Prob: N/A
+Info_set: 132   Action: 2  Prob: N/A
+Info_set: 132   Action: 3  Prob: N/A
+Info_set: 132   Action: 4  Prob: N/A
+===
+[[2, 4, 0, 0, 0], [2, 4, 0, 0, 1], [2, 4, 0, 0, 2], [2, 4, 0, 0, 3], [2, 4, 0, 0, 4], [2, 4, 0, 1, 0], [2, 4, 0, 1, 1], [2, 4, 0, 1, 2], [2, 4, 0, 1, 3], [2, 4, 0, 1, 4], [2, 4, 0, 2, 0], [2, 4, 0, 2, 1], [2, 4, 0, 2, 2], [2, 4, 0, 2, 3], [2, 4, 0, 2, 4]]
+Info_set: 133   Action: 0  Prob: N/A
+Info_set: 133   Action: 1  Prob: N/A
+Info_set: 133   Action: 2  Prob: N/A
+
+===
+[[2, 4, 1, 0], [2, 4, 1, 1], [2, 4, 1, 2]]
+Info_set: 134   Action: 0  Prob: N/A
+Info_set: 134   Action: 1  Prob: N/A
+Info_set: 134   Action: 2  Prob: N/A
+Info_set: 134   Action: 3  Prob: N/A
+Info_set: 134   Action: 4  Prob: N/A
+===
+[[2, 4, 1, 0, 0], [2, 4, 1, 0, 1], [2, 4, 1, 0, 2], [2, 4, 1, 0, 3], [2, 4, 1, 0, 4], [2, 4, 1, 1, 0], [2, 4, 1, 1, 1], [2, 4, 1, 1, 2], [2, 4, 1, 1, 3], [2, 4, 1, 1, 4], [2, 4, 1, 2, 0], [2, 4, 1, 2, 1], [2, 4, 1, 2, 2], [2, 4, 1, 2, 3], [2, 4, 1, 2, 4]]
+Info_set: 135   Action: 0  Prob: N/A
+Info_set: 135   Action: 1  Prob: N/A
+Info_set: 135   Action: 2  Prob: N/A
+
+===
+[[2, 4, 2, 0], [2, 4, 2, 1], [2, 4, 2, 2]]
+Info_set: 136   Action: 0  Prob: 0.066667
+Info_set: 136   Action: 1  Prob: 0.066667
+Info_set: 136   Action: 2  Prob: 0.288889
+Info_set: 136   Action: 3  Prob: 0.288889
+Info_set: 136   Action: 4  Prob: 0.288889
+===
+[[2, 4, 2, 0, 0], [2, 4, 2, 0, 1], [2, 4, 2, 0, 2], [2, 4, 2, 0, 3], [2, 4, 2, 0, 4], [2, 4, 2, 1, 0], [2, 4, 2, 1, 1], [2, 4, 2, 1, 2], [2, 4, 2, 1, 3], [2, 4, 2, 1, 4], [2, 4, 2, 2, 0], [2, 4, 2, 2, 1], [2, 4, 2, 2, 2], [2, 4, 2, 2, 3], [2, 4, 2, 2, 4]]
+Info_set: 137   Action: 0  Prob: 0.333333
+Info_set: 137   Action: 1  Prob: 0.333333
+Info_set: 137   Action: 2  Prob: 0.333333
+
+
+実行時間: 113.289230
