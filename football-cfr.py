@@ -10,13 +10,16 @@ import cfr_axu
 
 
 # Init Information
-itelater = 5
+itelater = 1000
 player = (0, 1)
 action = ( (0, 1, 2, 3, 4),
            (0, 1, 2) )
 chance_action = (0, 1, 2)
 
 payoff, information_set, infoset_player, infoset_action, infoset_chance, sigma, nu_sigma_list, sigma_sum, Regret, pi_i_sum = cfr_axu.create_master_data(action, chance_action)
+
+child_EU_dict = {}
+
 
 def CFR(h, i, t, pi_i, pi_other, init_utility):
     
@@ -29,14 +32,24 @@ def CFR(h, i, t, pi_i, pi_other, init_utility):
             if payoff[h[0]][h[1]][h[2]] >= 10:
                 return Decimal(str(1))
             else:
-                EU = cfr_axu.CFR_child( Decimal(str(payoff[h[0]][h[1]][h[2]])), h, itelater, player, action, chance_action )
-                return EU[i]
+                if str(h) in child_EU_dict:
+                    return child_EU_dict[str(h)][i]
+                else:
+                    EU = cfr_axu.CFR_child( Decimal(str(payoff[h[0]][h[1]][h[2]])), h, itelater, player, action, chance_action )
+                    dummy_EU1 = copy.copy(EU)
+                    child_EU_dict[str(h)] = dummy_EU1
+                    return EU[i]
         else:
             if payoff[h[0]][h[1]][h[2]] >= 10:
                 return Decimal(str(-1))
             else:
-                EU = cfr_axu.CFR_child( Decimal(str(payoff[h[0]][h[1]][h[2]])), h, itelater, player, action, chance_action )
-                return EU[i]
+                if str(h) in child_EU_dict:
+                    return child_EU_dict[str(h)][i]
+                else:
+                    EU = cfr_axu.CFR_child( Decimal(str(payoff[h[0]][h[1]][h[2]])), h, itelater, player, action, chance_action )
+                    dummy_EU2 = copy.copy(EU)
+                    child_EU_dict[str(h)] = dummy_EU2
+                    return EU[i]
     
     if h in infoset_chance:
         eu = Decimal(str(0))

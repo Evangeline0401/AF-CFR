@@ -37,9 +37,6 @@ def create_info_set(action, chance_action, payoff):
                 sample.append(hoge)
         if ite != 2:
             initial.append(sample)
-        # else:
-        #     for k in sample:
-        #         initial.append(k)
     
     return initial
 
@@ -47,25 +44,25 @@ def create_info_set(action, chance_action, payoff):
 def create_master_data(action, chance_action):
 
     # Master Data
-    master_sigma = [ [Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3))],
-                    [Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5))],
-                    [Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3))] ]
+    master_sigma =         [ [Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3))],
+                             [Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5))],
+                             [Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3))] ]
     master_nu_sigma_list = [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                            [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                            [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))] ]
-    master_sigma_sum = [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                        [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                        [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))] ]
-    master_Regret = [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                    [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                    [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))] ]
+                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))] ]
+    master_sigma_sum =     [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))] ]
+    master_Regret =        [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))] ]
 
     # Master Payoff
     master_payoff = [ [Decimal(3),  Decimal(2), Decimal(2)],
-                    [Decimal(3),  Decimal(4), Decimal(3)],
-                    [Decimal(7),  Decimal(7), Decimal(5)],
-                    [Decimal(8),  Decimal(9), Decimal(7)],
-                    [Decimal(7), Decimal(12), Decimal(5)], ]
+                      [Decimal(3),  Decimal(4), Decimal(3)],
+                      [Decimal(7),  Decimal(7), Decimal(5)],
+                      [Decimal(8),  Decimal(9), Decimal(7)],
+                      [Decimal(7), Decimal(12), Decimal(5)], ]
     payoff = create_payoff(master_payoff)
 
     # Create Information Set
@@ -144,7 +141,6 @@ def create_master_data(action, chance_action):
 def CFR_grandchild(init_payoff, history, itelater, player, action, chance_action):
 
     payoff, information_set, infoset_player, infoset_action, infoset_chance, sigma, nu_sigma_list, sigma_sum, Regret, pi_i_sum = create_master_data(action, chance_action)
-
 
     def CFRCFRCFR(h, i, t, pi_i, pi_other, init_utility):
         
@@ -244,7 +240,8 @@ def CFR_grandchild(init_payoff, history, itelater, player, action, chance_action
 def CFR_child(init_payoff, history, itelater, player, action, chance_action):
 
     payoff, information_set, infoset_player, infoset_action, infoset_chance, sigma, nu_sigma_list, sigma_sum, Regret, pi_i_sum = create_master_data(action, chance_action)
-
+    
+    grandchild_EU_dict = {}
 
     def CFRCFR(h, i, t, pi_i, pi_other, init_utility):
         
@@ -258,15 +255,25 @@ def CFR_child(init_payoff, history, itelater, player, action, chance_action):
                     return Decimal(str(1))
                 else:
                     #return Decimal(str(0))
-                    EU = CFR_grandchild( payoff[h[0]][h[1]][h[2]]+init_utility, history+h, itelater, player, action, chance_action )
-                    return EU[i]
+                    if str(h) in grandchild_EU_dict:
+                        return grandchild_EU_dict[str(h)][i]
+                    else:
+                        EU = CFR_grandchild( payoff[h[0]][h[1]][h[2]]+init_utility, history+h, itelater, player, action, chance_action )
+                        Dummy_EU1 = copy.copy(EU)
+                        grandchild_EU_dict[str(h)] = Dummy_EU1
+                        return EU[i]
             else:
                 if payoff[h[0]][h[1]][h[2]]+init_utility >= 10:
                     return Decimal(str(-1))
                 else:
                     #return Decimal(str(0))
-                    EU = CFR_grandchild( payoff[h[0]][h[1]][h[2]]+init_utility, history+h, itelater, player, action, chance_action )
-                    return EU[i]
+                    if str(h) in grandchild_EU_dict:
+                        return grandchild_EU_dict[str(h)][i]
+                    else:
+                        EU = CFR_grandchild( payoff[h[0]][h[1]][h[2]]+init_utility, history+h, itelater, player, action, chance_action )
+                        Dummy_EU2 = copy.copy(EU)
+                        grandchild_EU_dict[str(h)] = Dummy_EU2
+                        return EU[i]
         
         if h in infoset_chance:
             eu = Decimal(str(0))
