@@ -1,6 +1,6 @@
 """
 Counterfactual Regret
-American Football
+American Football  by SHIMANO
 """
 import time
 import copy
