@@ -12,8 +12,8 @@ import cfr_axu
 # Init Information
 itelater = 1000
 player = (0, 1)
-action = ( (0, 1, 2, 3, 4),
-           (0, 1, 2) )
+action = ( (0, 1, 2, 3, 4), #InRun, OutRun, ShortPass, MiddlePass, LongPass
+           (0, 1, 2) )#4men, 5men, 6men
 chance_action = (0, 1, 2)
 
 payoff, information_set, infoset_player, infoset_action, infoset_chance, sigma, nu_sigma_list, sigma_sum, Regret, pi_i_sum = cfr_axu.create_master_data(action, chance_action)
