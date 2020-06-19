@@ -4,66 +4,48 @@ import itertools
 from decimal import Decimal
 
 
-def create_payoff(master_payoff):
+def create_payoff():
     
-    payoff = []
-
-    L_P, H_P = [], []
-    for p1 in master_payoff:
-        l_p, h_p = [], []
-        for p2 in p1:
-            l_p.append(p2 - Decimal(str(2)))
-            h_p.append(p2 + Decimal(str(3)))
-        L_P.append(l_p)
-        H_P.append(h_p)
-    
-    payoff.append(L_P)
-    payoff.append(master_payoff)
-    payoff.append(H_P)
+    payoff = [ [ [Decimal(3), Decimal(6)], [Decimal(2), Decimal(5)],  [Decimal(2), Decimal(5)] ],
+               [ [Decimal(3), Decimal(5)], [Decimal(4), Decimal(7)],  [Decimal(3), Decimal(6)] ],
+               [ [Decimal(0), Decimal(7)], [Decimal(0), Decimal(7)],  [Decimal(0), Decimal(5)] ],
+               [ [Decimal(0), Decimal(8)], [Decimal(0), Decimal(9)],  [Decimal(0), Decimal(7)] ],
+               [ [Decimal(0), Decimal(7)], [Decimal(0), Decimal(12)], [Decimal(0), Decimal(5)] ], ]
 
     return payoff
 
 
 def create_info_set(action, chance_action, payoff):
 
-    initial = [ [[]] ]
-    ite_action = [chance_action, action[0], action[1]]
-    for ite in range(3):
-        sample = []
-        for i in initial[-1]:
-            for j in ite_action[ite]:
-                hoge = copy.copy(i)
-                hoge.append(j)
-                sample.append(hoge)
-        if ite != 2:
-            initial.append(sample)
-    
+    initial = [ [[]],
+                [[0], [1], [2], [3], [4]],
+                [[0, 0], [0, 1], [0, 2],
+                 [1, 0], [1, 1], [1, 2],
+                 [2, 0], [2, 1], [2, 2],
+                 [3, 0], [3, 1], [3, 2],
+                 [4, 0], [4, 1], [4, 2],] ]
+
     return initial
 
 
 def create_master_data(action, chance_action):
 
     # Master Data
-    master_sigma =         [ [Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3))],
-                             [Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5))],
-                             [Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3))] ]
-    master_nu_sigma_list = [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))] ]
-    master_sigma_sum =     [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))] ]
-    master_Regret =        [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
-                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))] ]
+    master_sigma =         [ [Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5)), Decimal(str(1))/Decimal(str(5))],
+                             [Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3)), Decimal(str(1))/Decimal(str(3))],
+                             [Decimal(str(1))/Decimal(str(2)), Decimal(str(1))/Decimal(str(2))] ]
+    master_nu_sigma_list = [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0))] ]
+    master_sigma_sum =     [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0))] ]
+    master_Regret =        [ [Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0)), Decimal(str(0))],
+                             [Decimal(str(0)), Decimal(str(0))] ]
 
-    # Master Payoff
-    master_payoff = [ [Decimal(3),  Decimal(2), Decimal(2)],
-                      [Decimal(3),  Decimal(4), Decimal(3)],
-                      [Decimal(7),  Decimal(7), Decimal(5)],
-                      [Decimal(8),  Decimal(9), Decimal(7)],
-                      [Decimal(7), Decimal(12), Decimal(5)], ]
-    payoff = create_payoff(master_payoff)
+    # Create Payoff
+    payoff = create_payoff()
 
     # Create Information Set
     information_set = create_info_set(action, chance_action, payoff)
@@ -72,11 +54,11 @@ def create_master_data(action, chance_action):
     infoset_player = []
     for i in information_set:
         if len(i) == 1 or (len(i) == 3 and type(i[0]) == int) or len(i) == 6:
-            infoset_player.append(3)
-        elif len(i) == 3 and type(i[0]) != int:
             infoset_player.append(0)
-        else:
+        elif len(i) == 5:
             infoset_player.append(1)
+        else:
+            infoset_player.append(2)
 
     # Create Information Set's Action
     infoset_action = []
@@ -94,7 +76,7 @@ def create_master_data(action, chance_action):
     # Create Chance Node's Information Set
     infoset_chance = []
     for i in information_set:
-        if len(i) == 1 or (len(i) == 3 and type(i[0]) == int ) or len(i) == 6:
+        if len(i) != 1 and len(i) != 5:
             dummyC = copy.copy(i)
             for j in dummyC:
                 infoset_chance.append(j)
@@ -103,30 +85,30 @@ def create_master_data(action, chance_action):
     sigma = []
     for i in infoset_player:
         if i == 0:
-            sigma0 = copy.copy(master_sigma[i+1])
+            sigma0 = copy.copy(master_sigma[i])
             sigma.append(sigma0)
         elif i == 1:
-            sigma1 = copy.copy(master_sigma[i+1])
+            sigma1 = copy.copy(master_sigma[i])
             sigma.append(sigma1)
         else:
-            sigma3 = copy.copy(master_sigma[0])
+            sigma3 = copy.copy(master_sigma[i])
             sigma.append(sigma3)
 
     # Create Some List
     nu_sigma_list, sigma_sum, Regret = [], [], []
     for i in infoset_player:
         if i == 0:
-            dummy0_nu, dummy0_sigma, dummy0_Reg = copy.copy(master_nu_sigma_list[i+1]), copy.copy(master_sigma_sum[i+1]), copy.copy(master_Regret[i+1])
+            dummy0_nu, dummy0_sigma, dummy0_Reg = copy.copy(master_nu_sigma_list[i]), copy.copy(master_sigma_sum[i]), copy.copy(master_Regret[i])
             nu_sigma_list.append(dummy0_nu)
             sigma_sum.append(dummy0_sigma)
             Regret.append(dummy0_Reg)
         elif i == 1:
-            dummy1_nu, dummy1_sigma, dummy1_Reg = copy.copy(master_nu_sigma_list[i+1]), copy.copy(master_sigma_sum[i+1]), copy.copy(master_Regret[i+1])
+            dummy1_nu, dummy1_sigma, dummy1_Reg = copy.copy(master_nu_sigma_list[i]), copy.copy(master_sigma_sum[i]), copy.copy(master_Regret[i])
             nu_sigma_list.append(dummy1_nu)
             sigma_sum.append(dummy1_sigma)
             Regret.append(dummy1_Reg)
         else:
-            dummy3_nu, dummy3_sigma, dummy3_Reg = copy.copy(master_nu_sigma_list[0]), copy.copy(master_sigma_sum[0]), copy.copy(master_Regret[0])
+            dummy3_nu, dummy3_sigma, dummy3_Reg = copy.copy(master_nu_sigma_list[i]), copy.copy(master_sigma_sum[i]), copy.copy(master_Regret[i])
             nu_sigma_list.append(dummy3_nu)
             sigma_sum.append(dummy3_sigma)
             Regret.append(dummy3_Reg)
@@ -142,6 +124,7 @@ def create_master_data(action, chance_action):
 def CFR_grandchild(init_payoff, history, itelater, player, action, chance_action):
 
     payoff, information_set, infoset_player, infoset_action, infoset_chance, sigma, nu_sigma_list, sigma_sum, Regret, pi_i_sum = create_master_data(action, chance_action)
+    pass_sigma = [Decimal(str(3))/Decimal(str(4)), Decimal(str(1))/Decimal(str(4))]
 
     def CFRCFRCFR(h, i, t, pi_i, pi_other, init_utility):
         
@@ -166,7 +149,10 @@ def CFR_grandchild(init_payoff, history, itelater, player, action, chance_action
             for a in chance_action:
                 dummy_eu = copy.copy(h)
                 dummy_eu.append(a)
-                eu += sigma[info_index][a] * CFRCFRCFR( dummy_eu, i, t, pi_i, sigma[info_index][a]*pi_other, init_utility )
+                if h[0] != 0 and h[0] != 1:
+                    eu += pass_sigma[a] * CFRCFRCFR( dummy_eu, i, t, pi_i, pass_sigma[a]*pi_other, init_utility )
+                else:
+                    eu += sigma[info_index][a] * CFRCFRCFR( dummy_eu, i, t, pi_i, sigma[info_index][a]*pi_other, init_utility )
             return eu
         
         nu_sigma = Decimal(str(0))
@@ -241,6 +227,7 @@ def CFR_grandchild(init_payoff, history, itelater, player, action, chance_action
 def CFR_child(init_payoff, history, itelater, player, action, chance_action):
 
     payoff, information_set, infoset_player, infoset_action, infoset_chance, sigma, nu_sigma_list, sigma_sum, Regret, pi_i_sum = create_master_data(action, chance_action)
+    pass_sigma = [Decimal(str(3))/Decimal(str(4)), Decimal(str(1))/Decimal(str(4))]
     
     grandchild_EU_dict = {}
 
@@ -281,7 +268,10 @@ def CFR_child(init_payoff, history, itelater, player, action, chance_action):
             for a in chance_action:
                 dummy_eu = copy.copy(h)
                 dummy_eu.append(a)
-                eu += sigma[info_index][a] * CFRCFR( dummy_eu, i, t, pi_i, sigma[info_index][a]*pi_other, init_utility )
+                if h[0] != 0 and h[0] != 1:
+                    eu += pass_sigma[a] * CFRCFR( dummy_eu, i, t, pi_i, pass_sigma[a]*pi_other, init_utility )
+                else:
+                    eu += sigma[info_index][a] * CFRCFR( dummy_eu, i, t, pi_i, sigma[info_index][a]*pi_other, init_utility )
             return eu
         
         nu_sigma = Decimal(str(0))
