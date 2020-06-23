@@ -14,6 +14,8 @@ def CFR(history, i, t, pi_i, pi_other, I_map):
     
     info_set = get_info_set(I_map, history)
 
+    strategy = info_set.strategy
+
 
 def check_terminal(history):
 
@@ -27,10 +29,14 @@ def check_chance(history):
 def get_info_set(I_map, history):
 
     key = len(history)
+    if key == 0:
+        info_set_player = 0
+    elif key == 1:
+        info_set_player = 1
     info_set = None
 
     if key not in I_map:
-        info_set = InformationSet(key, )
+        info_set = InformationSet(key, info_set_player)
         I_map[key] = info_set
         return info_set
 
@@ -38,11 +44,11 @@ def get_info_set(I_map, history):
 
 
 class InformationSet():
-    def __init__(self, key):
+    def __init__(self, key, info_set_player):
         self.key = key
-        self.regret_sum = np.zeros(_N_ACTIONS)
-        self.strategy_sum = np.zeros(_N_ACTIONS)
-        self.strategy = np.repeat(1/_N_ACTIONS, _N_ACTIONS)
+        self.regret_sum = np.zeros(len(action[info_set_player]))
+        self.strategy_sum = np.zeros(len(action[info_set_player]))
+        self.strategy = np.repeat(1/len(action[info_set_player]), len(action[info_set_player]))
         self.reach_pr = 0
         self.reach_pr_sum = 0
 
