@@ -27,6 +27,17 @@ def CFR(h, i, t, pi_i, pi_other, init_utility):
         if (h in c) or (h == c):
             info_index = information_set.index(c)
     
+    if h in infoset_chance:
+        eu = Decimal(str(0))
+        for a in chance_action:
+            dummy_eu = copy.copy(h)
+            dummy_eu.append(a)
+            #if h[0] != 0 and h[0] != 1:
+                #eu += pass_sigma[a] * CFR( dummy_eu, i, t, pi_i, pass_sigma[a]*pi_other, init_utility )
+            #else:
+            eu += sigma[info_index][a] * CFR( dummy_eu, i, t, pi_i, sigma[info_index][a]*pi_other, init_utility )
+        return eu
+
     if len(h) == 3:
         if i == 0:
             if payoff[h[0]][h[1]][h[2]] >= 10:
@@ -39,23 +50,12 @@ def CFR(h, i, t, pi_i, pi_other, init_utility):
             if payoff[h[0]][h[1]][h[2]] + payoff[h[3]][h[4]][h[5]] >= 10:
                 return Decimal(str(1))
             else:
-                return Decimal(str(0))
+                return Decimal(str(-1))
         else:
             if payoff[h[0]][h[1]][h[2]] + payoff[h[3]][h[4]][h[5]] >= 10:
                 return Decimal(str(-1))
             else:
-                return Decimal(str(0))
-
-    if h in infoset_chance:
-        eu = Decimal(str(0))
-        for a in chance_action:
-            dummy_eu = copy.copy(h)
-            dummy_eu.append(a)
-            #if h[0] != 0 and h[0] != 1:
-                #eu += pass_sigma[a] * CFR( dummy_eu, i, t, pi_i, pass_sigma[a]*pi_other, init_utility )
-            #else:
-            eu += sigma[info_index][a] * CFR( dummy_eu, i, t, pi_i, sigma[info_index][a]*pi_other, init_utility )
-        return eu
+                return Decimal(str(1))
 
     nu_sigma = Decimal(str(0))
     for a in infoset_action[info_index]:
