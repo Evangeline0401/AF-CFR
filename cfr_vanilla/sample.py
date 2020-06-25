@@ -9,7 +9,13 @@ def CFR(history, i, t, pi_i, pi_other, I_map):
     if check_terminal(history):
         return 0 #return utility
     elif check_chance(history):
-        return 1
+        expected_value = 0
+        possibilities = ["L", "H"]
+        p_prob = [1/2, 1/2]
+        for ite, act in enumerate(possibilities):
+            expected_value += p_prob[ite]*CFR(history+act, i, t,
+                                              pi_i, p_prob[ite]*pi_other, I_map)
+        return expected_value
     
     info_set, info_set_player = get_info_set(I_map, history)
 
@@ -40,6 +46,7 @@ def check_terminal(history):
 
 def check_chance(history):
     return len(history) == 2
+
 
 def get_info_set(I_map, history):
     key = len(history)
