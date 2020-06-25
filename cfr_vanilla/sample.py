@@ -7,7 +7,7 @@ action = [[0, 1, 2, 3, 4],
 
 def CFR(history, i, t, pi_i, pi_other, I_map):
     if check_terminal(history):
-        return 0 #return utility
+        return terminal_util(I_map, history)
     elif check_chance(history):
         expected_value = 0
         possibilities = ["L", "H"]
@@ -42,6 +42,10 @@ def CFR(history, i, t, pi_i, pi_other, I_map):
 
 def check_terminal(history):
     return len(history) == 3
+
+
+def terminal_util(I_map, history):
+    return 0
 
 
 def check_chance(history):
