@@ -1,19 +1,22 @@
 import time
+import sys
 import numpy as np
 
 player   = [0, 1]
 action   = [[0, 1, 2, 3, 4],
             [0, 1, 2]]
-get_yard = [ [ [3, 6], [2, 5],  [2, 5] ],
-             [ [3, 5], [4, 7],  [3, 6] ],
-             [ [0, 7], [0, 7],  [0, 5] ],
-             [ [0, 8], [0, 9],  [0, 7] ],
-             [ [0, 7], [0, 12], [0, 5] ] ]
+get_yard = [ [ [1, 3, 6],  [0, 2, 5],    [0, 2, 5]  ],
+             [ [1, 3, 6],  [2, 4, 7],    [1, 3, 6]  ],
+             [ [5, 7, 10], [5, 7, 10],   [3, 5, 8]  ],
+             [ [6, 8, 11], [7, 9, 12],   [5, 7, 10] ],
+             [ [5, 7, 10], [10, 12, 15], [3, 5, 8]  ] ]
+possibilities = ["0", "1", "2"]
+p_prob = [1/3, 1/3, 1/3]
 fresh_yard = 10
 
 def main():
     I_map = {}
-    itelator = 1000
+    itelator = 10000
 
     start = time.time()
     for t in range(itelator):
@@ -21,7 +24,7 @@ def main():
             CFR("", i, t, 1, 1, I_map)
         for key, v in I_map.items():
             v.next_strategy(key)
-        #print (t)
+        sys.stdout.write("\r{}/{}\r".format(t+1, itelator))
     finish = time.time()
     
     for key, v in I_map.items():
@@ -43,8 +46,8 @@ def CFR(history, i, t, pi_i, pi_other, I_map):
             return check
     if check_chance(history):
         expected_value = 0
-        possibilities = ["0", "1"]
-        p_prob = [1/2, 1/2]
+        #possibilities = ["0", "1"]
+        #p_prob = [1/2, 1/2]
         for ite, act in enumerate(possibilities):
             expected_value += p_prob[ite]*CFR(history+act, i, t,
                                               pi_i, p_prob[ite]*pi_other, I_map)
