@@ -1,14 +1,9 @@
 import time
 import sys
-import createData
 import numpy as np
 from tqdm import tqdm
-from decimal import Decimal
-from createData import *
-
 
 player   = [0, 1]
-"""
 action   = [[0, 1, 2, 3, 4],
             [0, 1, 2]]
 get_yard = [ [ [1, 3, 6],  [0, 2, 5],    [0, 2, 5]  ],
@@ -18,21 +13,19 @@ get_yard = [ [ [1, 3, 6],  [0, 2, 5],    [0, 2, 5]  ],
              [ [5, 7, 10], [10, 12, 15], [3, 5, 8]  ] ]
 possibilities = ["0", "1", "2"]
 p_prob = [1/5, 3/5, 1/5]
-"""
-action, get_yard, possibilities, p_prob = createInitialData()
 fresh_yard = 10
 
 def main():
     I_map = {}
-    itelator = 1
+    itelator = 10000
 
     start = time.time()
-    for t in range(itelator):
-        sys.stdout.write("\r{}/{}\r".format(t+1, itelator))
+    for t in tqdm(range(itelator)):
         for i in player:
             CFR("", i, t, 1, 1, I_map)
         for key, v in I_map.items():
             v.next_strategy(key)
+        sys.stdout.write("\r{}/{}\r".format(t+1, itelator))
     finish = time.time()
     
     for key, v in I_map.items():
@@ -56,9 +49,9 @@ def CFR(history, i, t, pi_i, pi_other, I_map):
         expected_value = 0
         #possibilities = ["0", "1"]
         #p_prob = [1/2, 1/2]
-        for ite, act in enumerate(possibilities[int(history[-8:-5])][int(history[-4:-1])]):
-            expected_value += p_prob[int(history[-8:-5])][int(history[-4:-1])][ite]*CFR(history+act+"/", i, t,
-                                                                                  pi_i, (p_prob[int(history[-8:-5])][int(history[-4:-1])][ite])*pi_other, I_map)
+        for ite, act in enumerate(possibilities):
+            expected_value += p_prob[ite]*CFR(history+act, i, t,
+                                              pi_i, p_prob[ite]*pi_other, I_map)
         return expected_value
     
     info_set, info_set_player = get_info_set(I_map, history)
@@ -70,11 +63,7 @@ def CFR(history, i, t, pi_i, pi_other, I_map):
 
     action_utils = np.zeros(len(action[info_set_player]))
     for ite, act in enumerate(action[info_set_player]):
-        if len(str(act)) == 1:
-            next_history = history +"00"+ str(act) +"/"
-        else:
-            next_history = history +"0"+ str(act) +"/"
-        
+        next_history = history + str(act)
         if info_set_player == i:
             action_utils[ite] = CFR(next_history, i, t,
                                     strategy[ite]*pi_i, pi_other, I_map)
@@ -92,12 +81,12 @@ def CFR(history, i, t, pi_i, pi_other, I_map):
 
 
 def check_terminal(history):
-    return len(history) == 12 or len(history) == 24 or len(history) == 36##############
+    return len(history) == 3 or len(history) == 6 or len(history) == 9
 
 
 def terminal_util(I_map, history, i):
-    if len(history) == 12:
-        yard = get_yard[int(history[0:3])][int(history[4:7])][int(history[8:11])]
+    if len(history) == 3:
+        yard = get_yard[int(history[0])][int(history[1])][int(history[2])]
         if yard >= fresh_yard:
             if i == 1:
                 return 1
@@ -108,9 +97,9 @@ def terminal_util(I_map, history, i):
                 return "Continue"
             else:
                 return "Continue"
-    elif len(history) == 24:
-        yard = ( get_yard[int(history[0:3])][int(history[4:7])][int(history[8:11])]+
-                 get_yard[int(history[12:15])][int(history[16:19])][int(history[20:23])] )
+    elif len(history) == 6:
+        yard = ( get_yard[int(history[0])][int(history[1])][int(history[2])]+
+                 get_yard[int(history[3])][int(history[4])][int(history[5])] )
         if yard >= fresh_yard:
             if i == 1:
                 return 1
@@ -118,14 +107,13 @@ def terminal_util(I_map, history, i):
                 return -1
         else:
             if i == 1:
-                return -1#"Continue"
+                return "Continue"
             else:
-                return 1#"Continue"
-    """
-    elif len(history) == 36:
-        yard = ( get_yard[int(history[0:3])][int(history[4:7])][int(history[8:11])]+
-                 get_yard[int(history[12:15])][int(history[16:19])][int(history[20:23])]+
-                 get_yard[int(history[24:27])][int(history[28:31])][int(history[32:35])] )
+                return "Continue"
+    elif len(history) == 9:
+        yard = ( get_yard[int(history[0])][int(history[1])][int(history[2])]+
+                 get_yard[int(history[3])][int(history[4])][int(history[5])]+
+                 get_yard[int(history[6])][int(history[7])][int(history[8])] )
         if yard >= fresh_yard:
             if i == 1:
                 return 1
@@ -136,11 +124,10 @@ def terminal_util(I_map, history, i):
                 return -1
             else:
                 return 1
-    """
 
 
 def check_chance(history):
-    return len(history) == 8 or len(history) == 20 or len(history) == 32#######
+    return len(history) == 2 or len(history) == 5 or len(history) == 8
 
 
 def get_info_set(I_map, history):
@@ -148,20 +135,20 @@ def get_info_set(I_map, history):
     if n == 0:
         key = "1st Off         "
         info_set_player = 0
-    elif n == 4:
+    elif n == 1:
         key = "1st Def         "
         info_set_player = 1
-    elif n == 12:
+    elif n == 3:
         key = "2nd Off = " + history + "   "
         info_set_player = 0
-    elif n == 16:
-        key = "2nd Def = " + history[:-4] + "   "
+    elif n == 4:
+        key = "2nd Def = " + history[:-1] + "   "
         info_set_player = 1
-    elif n == 24:
+    elif n == 6:
         key = "3rd Off = " + history
         info_set_player = 0
-    elif n == 28:
-        key = "3rd Def = " + history[:-4]
+    elif n == 7:
+        key = "3rd Def = " + history[:-1]
         info_set_player = 1
     info_set = None
 
