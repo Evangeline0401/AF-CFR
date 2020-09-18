@@ -106,6 +106,7 @@ num_dict = sorted(num_dict.items(), key=lambda x: x[1][2], reverse=True)
 for i in num_dict:
     if i[1][0] not in off_list:
         off_list.append(i[1][0])
+        print (i[1][0])
     if i[1][1] not in def_list:
         def_list.append(i[1][1])
 """
