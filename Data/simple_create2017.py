@@ -5,6 +5,7 @@ import math
 import pandas as pd
 import openpyxl as px
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 from scipy.stats import norm
 from decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN
@@ -148,6 +149,47 @@ for key, item in play_dictList.items():
     plt.close()
 
 #ヒストグラムの作成
+for key, item in play_dictList.items():
+    #外れ値削除
+    del_list = []
+    for i in item:
+        if IQR[key][0]-IQR[key][2]*1.5 > int(i):
+            del_list.append(i)
+        if IQR[key][1]+IQR[key][2]*1.5 < int(i):
+            del_list.append(i)
+    for j in del_list:
+        item.remove(j)
+    
+    fig = plt.figure()
+    plt.title(key+"    DataNum :"+str(len(item)))
+    plt.xlabel("Yard")
+    plt.ylabel("Num")
+    n, bins, patches = plt.hist(item, bins=10)
+    fig.savefig("Create/PNG/Hist/"+key+".png")
+    plt.close()
+
+"""
+#KDE処理（未完）
+for key, item in play_dictList.items():
+    #外れ値削除
+    del_list = []
+    for i in item:
+        if IQR[key][0]-IQR[key][2]*1.5 > int(i):
+            del_list.append(i)
+        if IQR[key][1]+IQR[key][2]*1.5 < int(i):
+            del_list.append(i)
+    for j in del_list:
+        item.remove(j)
+    
+    #sns.displot(item, bins=50, kde=True)
+    #plt.figure()
+    #plt.savefig("Create/PNG/Hist_kde/"+key+".png")
+    #plt.close()
+    # #画像出力方法考える！！！！！！
+
+"""
+
+#分布図の作成
 for key, item in play_distdict.items():
     #外れ値削除
     del_list = []

@@ -5,6 +5,7 @@ import math
 import pandas as pd
 import openpyxl as px
 import matplotlib.pyplot as plt
+import seaborn as sns
 import numpy as np
 from scipy.stats import norm
 from decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN
@@ -12,10 +13,69 @@ from decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN
 
 def createInitialData():
 
-    play_dictList = get_playDictList()
+    play_dictList, off_list, def_list = get_playDictList()
+
+    action, o_a_list, d_a_list = [], [], []
+    o_a_dict, d_a_dict = {}, {}
+    for i in range(len(off_list)):
+        o_a_dict[off_list[i]] = i
+        o_a_list.append(i)
+    action.append(o_a_list)
+    for i in range(len(def_list)):
+        d_a_dict[def_list[i]] = i
+        d_a_list.append(i)
+    action.append(d_a_list)
+
+    get_yard, possibilities, p_prob = [], [], []
+    IQR = {}
+    for key_a, item_a in o_a_dict.items():
+        for_off_action = []
+        for key_d, item_d in d_a_dict.items():
+            for_def_action = []
+            for key, item in play_dictList.items():
+                if key_a in key and key_d in key:
+                    # IQRの取得
+                    q25, q75 = np.percentile(item, [25, 75])
+                    IQR[key] = [q25, q75, q75 - q25]
+                    #外れ値削除
+                    del_list = []
+                    for i in item:
+                        if IQR[key][0]-IQR[key][2]*1.5 > int(i):
+                            del_list.append(i)
+                        if IQR[key][1]+IQR[key][2]*1.5 < int(i):
+                            del_list.append(i)
+                    for j in del_list:
+                        item.remove(j)
+                    
+                    n, bins, _ = plt.hist(item, bins=10, density=True)
+                    print (n)
+                    print (bins)
+                    print ("===")
+
+                    for_mode_list = []
+                    for Bin in range(len(bins)-1):
+                        if n[Bin] > 0:
+                            print ()
+                        else:
+                            print ()
+    
+
+    exit()
+
+
+
+
+
+
+
+
+
+
+
+
 
     action = [ [], [] ]
-    get_yard, possibilities, p_prob = [], [], []
+    
 
     wb = px.load_workbook("/Users/shimano/webappSample/GameTheory/Data/Create/create2017xl.xlsx")
     ws = wb["Sheet1"]
@@ -66,76 +126,101 @@ def createInitialData():
 
 def get_playDictList():
 
-    plays = open("/Users/shimano/webappSample/GameTheory/Data/Origin/plays.csv", "r")
+    plays = open("/Users/shimano/webappSample/GameTheory/Algorithm/Data/Origin/plays.csv", "r")
 
     p_reader = csv.reader(plays)
     p_header = next(p_reader)
 
-    data = []
-    play_dict, num_dict, play_dictList = {}, {}, {}
+    data, off_list, def_list = [], [], []
+    play_dict, num_dict, play_dictList, play_distdict = {}, {}, {}, {}
+
     for i, row in enumerate(p_reader):
-        if row[19] == "FALSE" and row[18] == "FALSE":
+        if row[19] == "FALSE" and row[18] == "FALSE" and row[20] == "NA" and "TWO-POINT" not in row[26]:
             if str(row[9]) != "NA" and str(row[10]) != "NA" and str(row[11]) != "NA" and str(row[13]) != "NA":
                 if "WR" not in str(row[13]) and "OL" not in str(row[13]) and "TE" not in str(row[13]):
-                    if "pass" in str(row[26]):
-                        hoge = {
-                            "Down": str(row[4]),
-                            "YardLineNumber": str(row[8]),
-                            "OffenseFormation": str(row[9]),
-                            "OffensePersonnel": str(row[10]),
-                            "DefenseInTheBox": str(row[11]),
-                            "DefensePersonnel": str(row[13]),
-                            "PlayType": "Pass",
-                            "RunGap": "NA",
-                            "PassLength": "short" if "short" in str(row[26]) else "deep",
-                            "ActionSide": "middle" if "middle" in str(row[26]) else "right" if "right" in str(row[26]) else "left",
-                            "PassYards": str(row[22]),
-                            "PassResult": str(row[23]),
-                            "YardsAfterCatch": str(row[24]),
-                            "PlayResult": str(row[25]),
-                            "Description": str(row[26]),
-                        }
-                        off_name = hoge["OffenseFormation"]+"/"+hoge["OffensePersonnel"]+"/"+hoge["PlayType"]+"/"+hoge["PassLength"]+"/"+hoge["ActionSide"]
-                        def_name = hoge["DefenseInTheBox"]+"/"+hoge["DefensePersonnel"]
-                        action_profile = off_name+" : "+def_name
-                        if action_profile not in play_dict:
-                            play_dict[action_profile] = int(hoge["PlayResult"])
-                            num_dict[action_profile]  = [off_name, def_name, 1]#1
-                            play_dictList[action_profile] = [int(hoge["PlayResult"])]
+                    if "4 DL, 3 LB" in str(row[13]) or "4 DL, 2 LB" in str(row[13]) or "3 DL, 4 LB" in str(row[13]):# or "4 DL, 1 LB" in str(row[13]):
+                        if "pass" in str(row[26]):
+                            hoge = {
+                                "DefensePersonnel": str(row[13]),
+                                "PlayType": "Pass",
+                                "RunGap": "NA",
+                                "PassLength": "short" if " short " in str(row[26]) else "deep",
+                                "ActionSide": "middle" if " middle " in str(row[26]) else "right" if " right " in str(row[26]) else "left",
+                                "PassYards": str(row[22]),
+                                "PassResult": str(row[23]),
+                                "YardsAfterCatch": str(row[24]),
+                                "PlayResult": str(row[25]),
+                                "Description": str(row[26]),
+                            }
+                            off_name = hoge["PlayType"]+":"+hoge["PassLength"]+":"+hoge["ActionSide"]
+                            if "4 DL, 3 LB" in str(row[13]):
+                                def_name = "4-3"
+                            elif "4 DL, 2 LB" in str(row[13]):
+                                def_name = "4-2"
+                            elif "3 DL, 4 LB" in str(row[13]):
+                                def_name = "3-4"
+                            elif "4 DL, 1 LB" in str(row[13]):
+                                def_name = "4-1"
+                            action_profile = off_name+" :: "+def_name
+                            if action_profile not in play_dict:
+                                play_dict[action_profile] = int(hoge["PlayResult"])
+                                num_dict[action_profile]  = [off_name, def_name, 1]#1
+                                play_dictList[action_profile] = [int(hoge["PlayResult"])]
+                                play_distdict[action_profile] = {str(hoge["PlayResult"]): 1}
+                            else:
+                                play_dict[action_profile] += int(hoge["PlayResult"])
+                                num_dict[action_profile][2]  += 1
+                                play_dictList[action_profile].append(int(hoge["PlayResult"]))
+                                if str(hoge["PlayResult"]) not in play_distdict[action_profile]:
+                                    play_distdict[action_profile][str(hoge["PlayResult"])] = 1
+                                else:
+                                    play_distdict[action_profile][str(hoge["PlayResult"])] += 1
                         else:
-                            play_dict[action_profile] += int(hoge["PlayResult"])
-                            num_dict[action_profile][2]  += 1
-                            play_dictList[action_profile].append(int(hoge["PlayResult"]))
-                    else:
-                        hoge = {
-                            "Down": str(row[4]),
-                            "YardLineNumber": str(row[8]),
-                            "OffenseFormation": str(row[9]),
-                            "OffensePersonnel": str(row[10]),
-                            "DefenseInTheBox": str(row[11]),
-                            "DefensePersonnel": str(row[13]),
-                            "PlayType": "Run",
-                            "RunGap": "end" if "end" in str(row[26]) else "guard" if "guard" in str(row[26]) else "tackle" if "tackle" in str(row[26]) else "NA",
-                            "PassLength": "NA",
-                            "ActionSide": "left" if "left" in str(row[26]) else "right" if "right" in str(row[26]) else "middle",
-                            "PassYards": str(row[22]),
-                            "PassResult": str(row[23]),
-                            "YardsAfterCatch": str(row[24]),
-                            "PlayResult": str(row[25]),
-                            "Description": str(row[26]),
-                        }
-                        off_name = hoge["OffenseFormation"]+"/"+hoge["OffensePersonnel"]+"/"+hoge["PlayType"]+"/"+hoge["RunGap"]+"/"+hoge["ActionSide"]
-                        def_name = hoge["DefenseInTheBox"]+"/"+hoge["DefensePersonnel"]
-                        action_profile = off_name+" : "+def_name
-                        if action_profile not in play_dict:
-                            play_dict[action_profile] = int(hoge["PlayResult"])
-                            num_dict[action_profile]  = [off_name, def_name, 1]#1
-                            play_dictList[action_profile] = [int(hoge["PlayResult"])]
-                        else:
-                            play_dict[action_profile] += int(hoge["PlayResult"])
-                            num_dict[action_profile][2]  += 1
-                            play_dictList[action_profile].append(int(hoge["PlayResult"]))
-                    
-                    data.append(hoge)
+                            hoge = {
+                                "DefensePersonnel": str(row[13]),
+                                "PlayType": "Run",
+                                "RunGap": "end" if " end " in str(row[26]) else "guard" if " guard " in str(row[26]) else "tackle" if " tackle " in str(row[26]) else "NA",
+                                "PassLength": "NA",
+                                "ActionSide": "left" if " left " in str(row[26]) else "right" if " right " in str(row[26]) else "middle",
+                                "PassYards": str(row[22]),
+                                "PassResult": str(row[23]),
+                                "YardsAfterCatch": str(row[24]),
+                                "PlayResult": str(row[25]),
+                                "Description": str(row[26]),
+                            }
+                            off_name = hoge["PlayType"]+":"+hoge["RunGap"]+":"+hoge["ActionSide"]
+                            if "4 DL, 3 LB" in str(row[13]):
+                                def_name = "4-3"
+                            elif "4 DL, 2 LB" in str(row[13]):
+                                def_name = "4-2"
+                            elif "3 DL, 4 LB" in str(row[13]):
+                                def_name = "3-4"
+                            elif "4 DL, 1 LB" in str(row[13]):
+                                def_name = "4-1"
+                            action_profile = off_name+" :: "+def_name
+                            if action_profile not in play_dict:
+                                play_dict[action_profile] = int(hoge["PlayResult"])
+                                num_dict[action_profile]  = [off_name, def_name, 1]#1
+                                play_dictList[action_profile] = [int(hoge["PlayResult"])]
+                                play_distdict[action_profile] = {str(hoge["PlayResult"]): 1}
+                            else:
+                                play_dict[action_profile] += int(hoge["PlayResult"])
+                                num_dict[action_profile][2]  += 1
+                                play_dictList[action_profile].append(int(hoge["PlayResult"]))
+                                if str(hoge["PlayResult"]) not in play_distdict[action_profile]:
+                                    play_distdict[action_profile][str(hoge["PlayResult"])] = 1
+                                else:
+                                    play_distdict[action_profile][str(hoge["PlayResult"])] += 1
+                        
+                        data.append(hoge)
     
-    return play_dictList
+    plays.close()
+
+    num_dict = sorted(num_dict.items(), key=lambda x: x[1][2], reverse=True)
+    for i in num_dict:
+        if i[1][0] not in off_list:
+            off_list.append(i[1][0])
+        if i[1][1] not in def_list:
+            def_list.append(i[1][1])
+    
+    return play_dictList, off_list, def_list
