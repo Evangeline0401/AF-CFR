@@ -164,7 +164,7 @@ for key, item in play_dictList.items():
     plt.title(key+"    DataNum :"+str(len(item)))
     plt.xlabel("Yard")
     plt.ylabel("Num")
-    n, bins, patches = plt.hist(item, bins=10)
+    n, bins, patches = plt.hist(item, bins=3)
     fig.savefig("Create/PNG/Hist/"+key+".png")
     plt.close()
 

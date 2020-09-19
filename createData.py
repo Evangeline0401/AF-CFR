@@ -7,7 +7,7 @@ import openpyxl as px
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-from scipy.stats import norm
+from scipy import stats
 from decimal import Decimal, ROUND_HALF_UP, ROUND_HALF_EVEN
 
 
@@ -28,16 +28,17 @@ def createInitialData():
 
     get_yard, possibilities, p_prob = [], [], []
     IQR = {}
-    for key_a, item_a in o_a_dict.items():
-        for_off_action = []
-        for key_d, item_d in d_a_dict.items():
-            for_def_action = []
+    for key_a, _ in o_a_dict.items():
+        for_off_action, for_off_action_poss, for_off_action_p = [], [], []
+
+        for key_d, _ in d_a_dict.items():
+            for_def_action, for_def_action_poss, for_def_action_p = [], [], []
+
             for key, item in play_dictList.items():
                 if key_a in key and key_d in key:
-                    # IQRの取得
                     q25, q75 = np.percentile(item, [25, 75])
                     IQR[key] = [q25, q75, q75 - q25]
-                    #外れ値削除
+                    
                     del_list = []
                     for i in item:
                         if IQR[key][0]-IQR[key][2]*1.5 > int(i):
@@ -47,79 +48,31 @@ def createInitialData():
                     for j in del_list:
                         item.remove(j)
                     
-                    n, bins, _ = plt.hist(item, bins=10, density=True)
-                    print (n)
-                    print (bins)
-                    print ("===")
+                    n, bins, _ = plt.hist(item, bins=3, density=True)
 
-                    for_mode_list = []
+                    num = 0
                     for Bin in range(len(bins)-1):
+                        for_mode_list = []
                         if n[Bin] > 0:
-                            print ()
-                        else:
-                            print ()
-    
-
-    exit()
-
-
-
-
-
-
-
-
-
-
-
-
-
-    action = [ [], [] ]
-    
-
-    wb = px.load_workbook("/Users/shimano/webappSample/GameTheory/Data/Create/create2017xl.xlsx")
-    ws = wb["Sheet1"]
-
-    for i in range(50):
-        if ws.cell(row=2+i, column=1).value == None:
-            break
-        action[0].append(i)
-        get_yard.append([])
-        possibilities.append([])
-        p_prob.append([])
-        for j in range(50):
-            if ws.cell(row=1, column=2+j).value == None:
-                break
-            if j not in action[1]:
-                action[1].append(j)
-            for k in play_dictList:
-                if ws.cell(row=2+i, column=1).value in k and ws.cell(row=1, column=2+j).value in k:
-                    #確率関数作成
-                    Min = math.floor(norm.ppf(0.00001, statistics.mean(play_dictList[k]), statistics.stdev(play_dictList[k])))
-                    if Min < -10:
-                        Min = -100
-                    Max = math.floor(norm.ppf(0.99999, statistics.mean(play_dictList[k]), statistics.stdev(play_dictList[k])))
-                    if Max > 100:
-                        Max = 100
-                    yard_and_prob, def_yard_clum, def_possib_clum, def_prob_clum = {}, [], [], []
-                    itenum = 0
-                    while Min < Max:
-                        p1 = norm.cdf(Min-0.5, statistics.mean(play_dictList[k]), statistics.stdev(play_dictList[k]))
-                        p2 = norm.cdf(Min+0.5, statistics.mean(play_dictList[k]), statistics.stdev(play_dictList[k]))
-                        yard_and_prob[str(Min)] = Decimal(p2-p1)
-                        def_yard_clum.append(Min)
-                        if len(str(itenum)) == 1:
-                            def_possib_clum.append("00"+str(itenum))
-                        elif len(str(itenum)) == 2:
-                            def_possib_clum.append("0"+str(itenum))
-                        else:
-                            def_possib_clum.append(str(itenum))
-                        def_prob_clum.append(p2-p1)
-                        itenum += 1
-                        Min += 1
-                    get_yard[i].append(def_yard_clum)
-                    possibilities[i].append(def_possib_clum)
-                    p_prob[i].append(def_prob_clum)
+                            for yard in item:
+                                if bins[Bin] <= yard and bins[Bin+1] >= yard:
+                                    for_mode_list.append(yard)
+                            M = stats.mode(for_mode_list)
+                            for_def_action.append(M.mode[0])
+                            if len(str(num)) == 1:
+                                for_def_action_poss.append("00"+str(num))
+                            elif len(str(num)) == 2:
+                                for_def_action_poss.append("0"+str(num))
+                            for_def_action_p.append(n[Bin])
+                            num += 1
+            
+            for_off_action.append(for_def_action)
+            for_off_action_poss.append(for_def_action_poss)
+            for_off_action_p.append(for_def_action_p)
+        
+        get_yard.append(for_off_action)
+        possibilities.append(for_off_action_poss)
+        p_prob.append(for_off_action_p)
 
     return action, get_yard, possibilities, p_prob
 

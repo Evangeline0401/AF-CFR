@@ -24,7 +24,7 @@ fresh_yard = 10
 
 def main():
     I_map = {}
-    itelator = 1
+    itelator = 1000
 
     start = time.time()
     for t in range(itelator):
@@ -118,10 +118,9 @@ def terminal_util(I_map, history, i):
                 return -1
         else:
             if i == 1:
-                return -1#"Continue"
+                return "Continue"
             else:
-                return 1#"Continue"
-    """
+                return "Continue"
     elif len(history) == 36:
         yard = ( get_yard[int(history[0:3])][int(history[4:7])][int(history[8:11])]+
                  get_yard[int(history[12:15])][int(history[16:19])][int(history[20:23])]+
@@ -136,7 +135,6 @@ def terminal_util(I_map, history, i):
                 return -1
             else:
                 return 1
-    """
 
 
 def check_chance(history):
