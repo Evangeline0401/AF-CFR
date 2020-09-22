@@ -48,7 +48,7 @@ def createInitialData():
                     for j in del_list:
                         item.remove(j)
                     
-                    n, bins, _ = plt.hist(item, bins=3, density=True)
+                    n, bins, _ = plt.hist(item, bins=3, density=True) ########
 
                     num = 0
                     for Bin in range(len(bins)-1):

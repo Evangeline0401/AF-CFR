@@ -44,7 +44,7 @@ for i, row in enumerate(p_reader):
                         }
                         #off_name = hoge["OffenseFormation"]+"/"+hoge["OffensePersonnel"]+"/"+hoge["PlayType"]+"/"+hoge["PassLength"]+"/"+hoge["ActionSide"]
                         #def_name = hoge["DefenseInTheBox"]+"/"+hoge["DefensePersonnel"]
-                        off_name = hoge["PlayType"]+":"+hoge["PassLength"]+":"+hoge["ActionSide"]
+                        off_name = hoge["PlayType"]+" "+hoge["PassLength"]+" "+hoge["ActionSide"]
                         if "4 DL, 3 LB" in str(row[13]):
                             def_name = "4-3"
                         elif "4 DL, 2 LB" in str(row[13]):
@@ -53,7 +53,7 @@ for i, row in enumerate(p_reader):
                             def_name = "3-4"
                         elif "4 DL, 1 LB" in str(row[13]):
                             def_name = "4-1"
-                        action_profile = off_name+" :: "+def_name
+                        action_profile = off_name+"    "+def_name
                         if action_profile not in play_dict:
                             play_dict[action_profile] = int(hoge["PlayResult"])
                             num_dict[action_profile]  = [off_name, def_name, 1]#1
@@ -87,7 +87,7 @@ for i, row in enumerate(p_reader):
                         }
                         #off_name = hoge["OffenseFormation"]+"/"+hoge["OffensePersonnel"]+"/"+hoge["PlayType"]+"/"+hoge["RunGap"]+"/"+hoge["ActionSide"]
                         #def_name = hoge["DefenseInTheBox"]+"/"+hoge["DefensePersonnel"]
-                        off_name = hoge["PlayType"]+":"+hoge["RunGap"]+":"+hoge["ActionSide"]
+                        off_name = hoge["PlayType"]+" "+hoge["RunGap"]+" "+hoge["ActionSide"]
                         if "4 DL, 3 LB" in str(row[13]):
                             def_name = "4-3"
                         elif "4 DL, 2 LB" in str(row[13]):
@@ -96,7 +96,7 @@ for i, row in enumerate(p_reader):
                             def_name = "3-4"
                         elif "4 DL, 1 LB" in str(row[13]):
                             def_name = "4-1"
-                        action_profile = off_name+" :: "+def_name
+                        action_profile = off_name+"    "+def_name
                         if action_profile not in play_dict:
                             play_dict[action_profile] = int(hoge["PlayResult"])
                             num_dict[action_profile]  = [off_name, def_name, 1]#1

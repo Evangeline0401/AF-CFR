@@ -24,7 +24,7 @@ fresh_yard = 10
 
 def main():
     I_map = {}
-    itelator = 1000
+    itelator = 10000
 
     start = time.time()
     for t in range(itelator):
