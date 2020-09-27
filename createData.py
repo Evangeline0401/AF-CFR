@@ -49,6 +49,8 @@ def createInitialData():
                         item.remove(j)
                     
                     n, bins, _ = plt.hist(item, bins=3, density=True) ########
+                    #print (n)
+                    #print (bins)
 
                     num = 0
                     for Bin in range(len(bins)-1):
@@ -63,8 +65,16 @@ def createInitialData():
                                 for_def_action_poss.append("00"+str(num))
                             elif len(str(num)) == 2:
                                 for_def_action_poss.append("0"+str(num))
-                            for_def_action_p.append(n[Bin])
+                            for_def_action_p.append( n[Bin]*(bins[Bin+1]-bins[Bin]) )
                             num += 1
+                    #print (key)
+                    hogehogehoge = 0
+                    for shimano in range(len(for_def_action)):
+                        hogehogehoge += for_def_action[shimano]*for_def_action_p[shimano]
+                    #print (for_def_action)
+                    #print (for_def_action_p)
+                    #print (hogehogehoge)
+                    #print ()
             
             for_off_action.append(for_def_action)
             for_off_action_poss.append(for_def_action_poss)
@@ -73,7 +83,8 @@ def createInitialData():
         get_yard.append(for_off_action)
         possibilities.append(for_off_action_poss)
         p_prob.append(for_off_action_p)
-
+    
+    #exit()
     return action, get_yard, possibilities, p_prob
 
 

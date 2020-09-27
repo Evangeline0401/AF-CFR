@@ -164,7 +164,12 @@ for key, item in play_dictList.items():
     plt.title(key+"    DataNum :"+str(len(item)))
     plt.xlabel("Yard")
     plt.ylabel("Num")
-    n, bins, patches = plt.hist(item, bins=3)
+    n, bins, patches = plt.hist(item, bins=3, density=True) #######
+    print (key)
+    hogehoge = []
+    for i in range(len(n)):
+        print ( n[i]*(bins[i+1]-bins[i]) )
+    print ("===")
     fig.savefig("Create/PNG/Hist/"+key+".png")
     plt.close()
 

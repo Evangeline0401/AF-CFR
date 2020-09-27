@@ -8,6 +8,7 @@ from createData import *
 
 
 player   = [0, 1]
+
 """
 action   = [[0, 1, 2, 3, 4],
             [0, 1, 2]]
@@ -19,8 +20,10 @@ get_yard = [ [ [1, 3, 6],  [0, 2, 5],    [0, 2, 5]  ],
 possibilities = ["0", "1", "2"]
 p_prob = [1/5, 3/5, 1/5]
 """
+
 action, get_yard, possibilities, p_prob = createInitialData()
 fresh_yard = 10
+
 
 def main():
     I_map = {}
@@ -37,7 +40,7 @@ def main():
     
     for key, v in I_map.items():
         strategy = v.strategy_sum / v.reach_pr_sum
-        strategy = np.where(strategy < 0.001, 0, strategy)
+        strategy = np.where(strategy < 0.001, 0, strategy) #0.001
         total = sum(strategy)
         strategy /= total
         print (key+": ", strategy)
@@ -99,12 +102,12 @@ def terminal_util(I_map, history, i):
     if len(history) == 12:
         yard = get_yard[int(history[0:3])][int(history[4:7])][int(history[8:11])]
         if yard >= fresh_yard:
-            if i == 1:
+            if i == 0:
                 return 1
             else:
                 return -1
         else:
-            if i == 1:
+            if i == 0:
                 return "Continue"
             else:
                 return "Continue"
@@ -112,12 +115,12 @@ def terminal_util(I_map, history, i):
         yard = ( get_yard[int(history[0:3])][int(history[4:7])][int(history[8:11])]+
                  get_yard[int(history[12:15])][int(history[16:19])][int(history[20:23])] )
         if yard >= fresh_yard:
-            if i == 1:
+            if i == 0:
                 return 1
             else:
                 return -1
         else:
-            if i == 1:
+            if i == 0:
                 return "Continue"
             else:
                 return "Continue"
@@ -126,12 +129,12 @@ def terminal_util(I_map, history, i):
                  get_yard[int(history[12:15])][int(history[16:19])][int(history[20:23])]+
                  get_yard[int(history[24:27])][int(history[28:31])][int(history[32:35])] )
         if yard >= fresh_yard:
-            if i == 1:
+            if i == 0:
                 return 1
             else:
                 return -1
         else:
-            if i == 1:
+            if i == 0:
                 return -1
             else:
                 return 1
