@@ -67,14 +67,14 @@ def createInitialData():
                                 for_def_action_poss.append("0"+str(num))
                             for_def_action_p.append( n[Bin]*(bins[Bin+1]-bins[Bin]) )
                             num += 1
-                    print (key)
+                    #print (key)
                     hogehogehoge = 0
                     for shimano in range(len(for_def_action)):
                         hogehogehoge += for_def_action[shimano]*for_def_action_p[shimano]
-                    print (for_def_action)
-                    print (for_def_action_p)
-                    print (hogehogehoge)
-                    print ()
+                    #print (for_def_action)
+                    #print (for_def_action_p)
+                    #print (hogehogehoge)
+                    #print ()
             
             for_off_action.append(for_def_action)
             for_off_action_poss.append(for_def_action_poss)
@@ -84,7 +84,7 @@ def createInitialData():
         possibilities.append(for_off_action_poss)
         p_prob.append(for_off_action_p)
     
-    exit()
+    #exit()
     return action, get_yard, possibilities, p_prob
 
 
