@@ -11,7 +11,7 @@
 
 ＜論文タイトル＞
 反実仮想後悔最小化によるアメリカンフットボールにおけるオフェンス戦略の均衡推定
-Equilibrium Estimation of Offense Strategy in American Football by Counterfactual Regret Minimization
+Computing Offensive Strategies of American Football via Counterfactual Regret Minimization
 
 ＜概要＞
 本論文では反実仮想後悔最小化（Counterfactual Regret Minimization）を用いて，アメリカンフットボールにおけるオフェンス戦略の均衡を推定した．
