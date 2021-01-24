@@ -18,6 +18,7 @@ p_header = next(p_reader)
 
 data, off_list, def_list = [], [], []
 play_dict, num_dict, play_dictList, play_distdict = {}, {}, {}, {}
+down_and_togo = {}
 
 for i, row in enumerate(p_reader):
     if row[19] == "FALSE" and row[18] == "FALSE" and row[20] == "NA" and "TWO-POINT" not in row[26]:
@@ -27,6 +28,7 @@ for i, row in enumerate(p_reader):
                     if "pass" in str(row[26]):
                         hoge = {
                             "Down": str(row[4]),
+                            "yardsToGo": str(row[5]), ###
                             "YardLineNumber": str(row[8]),
                             "OffenseFormation": str(row[9]),
                             "OffensePersonnel": str(row[10]),
@@ -67,9 +69,24 @@ for i, row in enumerate(p_reader):
                                 play_distdict[action_profile][str(hoge["PlayResult"])] = 1
                             else:
                                 play_distdict[action_profile][str(hoge["PlayResult"])] += 1
+                        
+                        #Downと残りyd毎のプレイ比率収集
+                        if row[8] != "NA":
+                            if hoge["Down"] != "4" and ( (row[6] == row[7] and int(row[8]) >= 20) or (row[6] != row[7] and int(row[8]) >= 30) ):
+                                dat = hoge["Down"]+" Down "+hoge["yardsToGo"] if len(hoge["yardsToGo"]) == 2 else hoge["Down"]+" Down 0"+hoge["yardsToGo"]
+                                if dat not in down_and_togo:
+                                    down_and_togo[dat] = {}
+                                    down_and_togo[dat][off_name] = 1
+                                else:
+                                    if off_name not in down_and_togo[dat]:
+                                        down_and_togo[dat][off_name] = 1
+                                    else:
+                                        down_and_togo[dat][off_name] += 1
+
                     else:
                         hoge = {
                             "Down": str(row[4]),
+                            "yardsToGo": str(row[5]), ###
                             "YardLineNumber": str(row[8]),
                             "OffenseFormation": str(row[9]),
                             "OffensePersonnel": str(row[10]),
@@ -110,6 +127,19 @@ for i, row in enumerate(p_reader):
                                 play_distdict[action_profile][str(hoge["PlayResult"])] = 1
                             else:
                                 play_distdict[action_profile][str(hoge["PlayResult"])] += 1
+                        
+                        #Downと残りyd毎のプレイ比率収集
+                        if row[8] != "NA":
+                            if hoge["Down"] != "4" and ( (row[6] == row[7] and int(row[8]) >= 20) or (row[6] != row[7] and int(row[8]) >= 30) ):
+                                dat = hoge["Down"]+" Down "+hoge["yardsToGo"] if len(hoge["yardsToGo"]) == 2 else hoge["Down"]+" Down 0"+hoge["yardsToGo"]
+                                if dat not in down_and_togo:
+                                    down_and_togo[dat] = {}
+                                    down_and_togo[dat][off_name] = 1
+                                else:
+                                    if off_name not in down_and_togo[dat]:
+                                        down_and_togo[dat][off_name] = 1
+                                    else:
+                                        down_and_togo[dat][off_name] += 1
                     
                     data.append(hoge)
 
@@ -219,3 +249,16 @@ for key, item in play_distdict.items():
     plt.ylabel("Num")
     fig.savefig("Create/PNG/Dist/"+key+".png")
     plt.close()
+
+
+#Downと残りyd毎のプレイ比率をターミナル出力
+s_down_and_togo = sorted(down_and_togo.items(), key=lambda x: x[0])
+for i in s_down_and_togo:
+    num = 0
+    for _, item in i[1].items():
+        num += item
+    for key, item in i[1].items():
+        i[1][key] = item/num
+    print (i[0])
+    print ("    "+str(num))
+    print ("    "+str(i[1]))
